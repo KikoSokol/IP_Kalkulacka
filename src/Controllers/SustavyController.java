@@ -1,0 +1,359 @@
+package Controllers;
+
+import Exceptions.neexistujucaSustavaException;
+import Objekty.Sustavy;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class SustavyController implements Initializable
+{
+
+    @FXML
+    private TextField binarna;
+
+    @FXML
+    private TextField sestnastkova;
+
+    @FXML
+    private HBox tlacidlaHB;
+
+    @FXML
+    private Label funkciaL;
+
+    @FXML
+    private Button vlsm;
+
+    @FXML
+    private VBox menuVB;
+
+    @FXML
+    private HBox natovHB;
+
+    @FXML
+    private VBox vyudajeVB;
+
+    @FXML
+    private Label chybaL;
+
+    @FXML
+    private TextField desiatkova;
+
+    @FXML
+    private Button subnetting1;
+
+    @FXML
+    private Label nazovL;
+
+    @FXML
+    private Button pmw;
+
+    @FXML
+    private Button subnetting2;
+
+    @FXML
+    private Button ipinfo;
+
+    @FXML
+    private TextField osmickova;
+
+    @FXML
+    private Button sustavy;
+
+    @FXML
+    private HBox funkciaHB;
+
+    @FXML
+    void ipinfoAction(ActionEvent event) throws IOException {
+        FXMLLoader ipInfoLoader = new FXMLLoader();
+        ipInfoLoader.setLocation(getClass().getResource("../View/IPInfo.fxml"));
+
+        Parent ipInfoParent = ipInfoLoader.load();
+
+        Scene ipInfoScena = new Scene(ipInfoParent);
+
+        Stage ipInfoStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        ipInfoStage.setScene(ipInfoScena);
+        ipInfoStage.setTitle("IP Info");
+        ipInfoStage.show();
+
+    }
+
+    @FXML
+    void pmwAction(ActionEvent event) throws IOException {
+        FXMLLoader pmwLoader = new FXMLLoader();
+        pmwLoader.setLocation(getClass().getResource("../View/Pmw.fxml"));
+
+        Parent pmwParent = pmwLoader.load();
+
+        Scene pmwScena = new Scene(pmwParent);
+
+        Stage pmwStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        pmwStage.setScene(pmwScena);
+        pmwStage.setTitle("Prefix/Maska/Wildcard");
+        pmwStage.show();
+
+    }
+
+    @FXML
+    void subnetting1Action(ActionEvent event) throws IOException {
+        FXMLLoader subnetting1Loader = new FXMLLoader();
+        subnetting1Loader.setLocation(getClass().getResource("../View/Subnetting1.fxml"));
+
+        Parent subnetting1Parent = subnetting1Loader.load();
+
+        Scene subnetting1Scena = new Scene(subnetting1Parent);
+
+        Stage subnetting1Stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        subnetting1Stage.setScene(subnetting1Scena);
+        subnetting1Stage.setTitle("Subnetting - rovnako veľke siete");
+        subnetting1Stage.show();
+
+    }
+
+    @FXML
+    void subneting2Action(ActionEvent event) throws IOException {
+        FXMLLoader subnetting2Loader = new FXMLLoader();
+        subnetting2Loader.setLocation(getClass().getResource("../View/Subnetting2.fxml"));
+
+        Parent subnetting2Parent = subnetting2Loader.load();
+
+        Scene subnetting2Scena = new Scene(subnetting2Parent);
+
+        Stage subnetting2Stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        subnetting2Stage.setScene(subnetting2Scena);
+        subnetting2Stage.setTitle("Subnetting - podla najväčšej siete");
+        subnetting2Stage.show();
+
+    }
+
+    @FXML
+    void vlsmAction(ActionEvent event) throws IOException {
+        FXMLLoader vlsmLoader = new FXMLLoader();
+        vlsmLoader.setLocation(getClass().getResource("../View/Vlsm.fxml"));
+
+        Parent vlsmParent = vlsmLoader.load();
+
+        Scene vlsmScena = new Scene(vlsmParent);
+
+        Stage vlsmStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        vlsmStage.setScene(vlsmScena);
+        vlsmStage.setTitle("VLSM");
+        vlsmStage.show();
+
+    }
+
+    @FXML
+    void sustavyAction(ActionEvent event) throws IOException {
+        FXMLLoader sustavyLoader = new FXMLLoader();
+        sustavyLoader.setLocation(getClass().getResource("../View/Sustavy.fxml"));
+
+        Parent sustavyParent = sustavyLoader.load();
+
+        Scene sustavyScena = new Scene(sustavyParent);
+
+        Stage sustavyStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        sustavyStage.setScene(sustavyScena);
+        sustavyStage.setTitle("Prevod číselných sústav");
+        sustavyStage.show();
+
+    }
+
+    @FXML
+    void vymazAction(ActionEvent event)
+    {
+        desiatkova.setText("");
+        binarna.setText("");
+        osmickova.setText("");
+        sestnastkova.setText("");
+        chybaL.setText("");
+
+    }
+    private int prevod = 0;
+    @Override
+    public void initialize(URL location, ResourceBundle resources)
+    {
+        //nastavenie prepocitavania, obmedzeni na textfieldy
+        desiatkova.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    desiatkova.setText(newValue.replaceAll("[^\\d]", ""));
+                }
+
+                if(desiatkova.getText().equals(""))
+                {
+                    binarna.setText("");
+                    osmickova.setText("");
+                    sestnastkova.setText("");
+                }
+                else
+                {
+                    if (prevod == 0)
+                    {
+                        Sustavy sustavy = null;
+                        try
+                        {
+                            sustavy = new Sustavy(Long.parseLong(desiatkova.getText()));
+                            binarna.setText(sustavy.getBinarna());
+                            osmickova.setText(sustavy.getOsmickova());
+                            sestnastkova.setText(sustavy.getSestnastkova());
+                            System.out.println("a");
+                            chybaL.setText("");
+                        }
+                        catch (NumberFormatException e)
+                        {
+                            System.out.println("aaa");
+                            chybaL.setText("Príliš veľké číslo.");
+                            binarna.setText("");
+                            osmickova.setText("");
+                            sestnastkova.setText("");
+                        }
+                        catch (ArithmeticException e)
+                        {
+                            chybaL.setText("Príliš veľké číslo.");
+                            binarna.setText("");
+                            osmickova.setText("");
+                            sestnastkova.setText("");
+                        }
+                    }
+                }
+
+            }
+        });
+
+        //binarna
+        binarna.setOnMouseClicked(event -> prevod = 1);
+        binarna.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                if (!newValue.equals("0") || !newValue.equals("1")) {
+                    binarna.setText(newValue.replaceAll("[^\\\\0\\\\1]", ""));
+                }
+
+                if (prevod == 1)
+                {
+                    Sustavy sustavy = null;
+                    try {
+                        sustavy = new Sustavy(binarna.getText(), 2);
+                        desiatkova.setText(sustavy.getDesiatkova());
+                        osmickova.setText(sustavy.getOsmickova());
+                        sestnastkova.setText(sustavy.getSestnastkova());
+                        System.out.println("a");
+                        chybaL.setText("");
+                    }
+                    catch (neexistujucaSustavaException e)
+                    {
+                        System.out.println("binarna");
+                    }
+                    catch (ArithmeticException e)
+                    {
+                        chybaL.setText("Príliš veľké číslo.");
+                        binarna.setText("");
+                        osmickova.setText("");
+                        sestnastkova.setText("");
+                    }
+                }
+            }
+        });
+
+
+        //osmickova
+        osmickova.setOnMouseClicked(event -> prevod = 2);
+        osmickova.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                if (!newValue.equals("0")|| !newValue.equals("1") || !newValue.equals("2") || !newValue.equals("3") || !newValue.equals("4") || !newValue.equals("5") || !newValue.equals("6") || !newValue.equals("7")) {
+                    osmickova.setText(newValue.replaceAll("[^\\\\0\\\\1\\\\2\\\\3\\\\4\\\\5\\\\6\\\\7]", ""));
+                }
+
+                if (prevod == 2)
+                {
+                    Sustavy sustavy = null;
+                    try
+                    {
+                        sustavy = new Sustavy(osmickova.getText(), 8);
+                        desiatkova.setText(sustavy.getDesiatkova());
+                        binarna.setText(sustavy.getBinarna());
+                        sestnastkova.setText(sustavy.getSestnastkova());
+                        System.out.println("a");
+                        chybaL.setText("");
+                    }
+                    catch (neexistujucaSustavaException e)
+                    {
+                        System.out.println("osem");
+                    }
+                    catch (ArithmeticException e)
+                    {
+                        chybaL.setText("Príliš veľké číslo.");
+                        binarna.setText("");
+                        osmickova.setText("");
+                        sestnastkova.setText("");
+                    }
+                }
+            }
+        });
+
+
+        //sestnastkova
+        sestnastkova.setOnMouseClicked(event -> prevod = 3);
+        sestnastkova.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                if (!newValue.equals("0")|| !newValue.equals("1") || !newValue.equals("2") || !newValue.equals("3") ||
+                        !newValue.equals("4") || !newValue.equals("5") || !newValue.equals("6") || !newValue.equals("7")
+                        || !newValue.equals("8") || !newValue.equals("9") || !newValue.equals("A") || !newValue.equals("a")
+                        || !newValue.equals("B") || !newValue.equals("b") || !newValue.equals("C") || !newValue.equals("c")
+                        || !newValue.equals("D") || !newValue.equals("d") || !newValue.equals("E") || !newValue.equals("e")
+                        || !newValue.equals("F") || !newValue.equals("f")) {
+                    sestnastkova.setText(newValue.replaceAll("[^\\\\0\\\\1\\\\2\\\\3\\\\4\\\\5\\\\6\\\\7\\\\8\\\\9\\\\A\\\\a\\\\B\\\\b\\\\C\\\\c\\\\D\\\\d\\\\E\\\\e\\\\F\\\\f]", ""));
+                }
+
+                if (prevod == 3)
+                {
+                    Sustavy sustavy = null;
+                    try
+                    {
+                        sustavy = new Sustavy(sestnastkova.getText(), 16);
+                        desiatkova.setText(sustavy.getDesiatkova());
+                        binarna.setText(sustavy.getBinarna());
+                        osmickova.setText(sustavy.getOsmickova());
+                        System.out.println("a");
+                        chybaL.setText("");
+                    }
+                    catch (neexistujucaSustavaException e)
+                    {
+                        System.out.println("sestnast");
+                    }
+                    catch (ArithmeticException e)
+                    {
+                        chybaL.setText("Príliš veľké číslo.");
+                        binarna.setText("");
+                        osmickova.setText("");
+                        sestnastkova.setText("");
+                    }
+                }
+            }
+        });
+    }
+}

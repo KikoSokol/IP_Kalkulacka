@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="hlavna" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.SustavyController">
+   <children>
+      <BorderPane blendMode="MULTIPLY" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <VBox fx:id="menuVB" prefHeight="479.0" prefWidth="1280.0" spacing="10.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox id="nazovHB" fx:id="natovHB" alignment="CENTER" prefHeight="68.0" prefWidth="1280.0">
+                     <children>
+                        <Label id="nazovL" fx:id="nazovL" alignment="CENTER" contentDisplay="CENTER" prefHeight="68.0" prefWidth="1280.0" text="IP Kalkulačka">
+                           <font>
+                              <Font name="Arial Bold" size="47.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox id="vsudajeHB" fx:id="tlacidlaHB" alignment="CENTER" minHeight="64.0" prefHeight="64.0" prefWidth="1280.0">
+                     <children>
+                        <Button id="menuTlacidla" fx:id="ipinfo" focusTraversable="false" mnemonicParsing="false" onAction="#ipinfoAction" prefHeight="100.0" prefWidth="213.0" text="IP Info">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font></Button>
+                        <Button id="menuTlacidla" fx:id="pmw" focusTraversable="false" mnemonicParsing="false" onAction="#pmwAction" prefHeight="100.0" prefWidth="213.0" text="PMW">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font></Button>
+                        <Button id="menuTlacidla" fx:id="subnetting1" focusTraversable="false" mnemonicParsing="false" onAction="#subnetting1Action" prefHeight="100.0" prefWidth="213.0" text="Subnetting -&#10; rovnaka veľkosť sieti" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font></Button>
+                        <Button id="menuTlacidla" fx:id="subnetting2" contentDisplay="CENTER" focusTraversable="false" mnemonicParsing="false" onAction="#subneting2Action" prefHeight="100.0" prefWidth="213.0" text="Subnetting - &#10;podľa najväčšej siete" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font></Button>
+                        <Button id="menuTlacidla" fx:id="vlsm" focusTraversable="false" mnemonicParsing="false" onAction="#vlsmAction" prefHeight="100.0" prefWidth="213.0" text="VLSM">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font></Button>
+                        <Button id="menuTlacidla" fx:id="sustavy" mnemonicParsing="false" onAction="#sustavyAction" prefHeight="100.0" prefWidth="213.0" text="Číselné sústavy">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font></Button>
+                     </children>
+                  </HBox>
+                  <HBox id="vsudajeHB" fx:id="funkciaHB" alignment="CENTER" prefHeight="51.0" prefWidth="1280.0">
+                     <children>
+                        <Label fx:id="funkciaL" alignment="CENTER" prefHeight="34.0" prefWidth="1280.0" text="Číselné sústavy">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font></Label>
+                     </children>
+                  </HBox>
+                  <HBox id="vsudajeVB" alignment="CENTER" minHeight="45.0" prefHeight="45.0" prefWidth="1280.0">
+                     <children>
+                        <Button alignment="CENTER" minHeight="40.0" mnemonicParsing="false" onAction="#vymazAction" prefHeight="45.0" prefWidth="900.0" text="Vymaž" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="23.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="180.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox id="vsudajeVB" alignment="CENTER" minHeight="40.0" prefHeight="40.0" prefWidth="1280.0" spacing="10.0">
+                     <children>
+                        <Label id="nazovTF" minHeight="40.0" prefHeight="40.0" prefWidth="168.0" text="Desiatková">
+                           <font>
+                              <Font name="System Bold" size="25.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="desiatkova" alignment="CENTER" minHeight="40.0" prefHeight="40.0" prefWidth="900.0" promptText="10">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <HBox id="vsudajeVB" alignment="CENTER" minHeight="40.0" prefHeight="40.0" prefWidth="1280.0" spacing="10.0">
+                     <children>
+                        <Label id="nazovTF" minHeight="40.0" prefHeight="40.0" prefWidth="170.0" text="Binárna      ">
+                           <font>
+                              <Font name="System Bold" size="25.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="binarna" alignment="CENTER" minHeight="40.0" prefHeight="40.0" prefWidth="900.0" promptText="1010">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <HBox id="vsudajeVB" alignment="CENTER" minHeight="40.0" prefHeight="40.0" prefWidth="1280.0" spacing="10.0">
+                     <children>
+                        <Label id="nazovTF" prefHeight="40.0" prefWidth="172.0" text="Osmičková      ">
+                           <font>
+                              <Font name="System Bold" size="25.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="osmickova" alignment="CENTER" minHeight="40.0" prefHeight="40.0" prefWidth="900.0" promptText="12">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" minHeight="40.0" prefHeight="40.0" prefWidth="1280.0" spacing="10.0">
+                     <children>
+                        <Label id="nazovTF" prefHeight="39.0" prefWidth="175.0" text="Šestnástková  ">
+                           <font>
+                              <Font name="System Bold" size="25.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="sestnastkova" alignment="CENTER" maxWidth="900.0" minHeight="40.0" prefHeight="40.0" prefWidth="900.0" promptText="A">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <HBox id="vsudajeVB" alignment="CENTER" minHeight="40.0" prefHeight="40.0" prefWidth="200.0">
+                     <children>
+                        <Label fx:id="chybaL" alignment="CENTER" minHeight="40.0" prefHeight="40.0" prefWidth="1280.0" textFill="RED">
+                           <font>
+                              <Font name="System Bold" size="29.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </top>
+         <center>
+            <VBox id="vyudajeVB" fx:id="vyudajeVB" alignment="TOP_CENTER" prefHeight="464.0" prefWidth="1280.0" BorderPane.alignment="CENTER" />
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>
