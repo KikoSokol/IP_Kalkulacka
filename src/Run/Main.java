@@ -13,6 +13,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("../View/IPInfo.fxml"));
         primaryStage.setTitle("IP Info");
         primaryStage.setScene(new Scene(root));
+        primaryStage.centerOnScreen();
         primaryStage.show();
     }
 

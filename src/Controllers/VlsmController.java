@@ -351,19 +351,16 @@ public class VlsmController implements Initializable
         //uloznie poctov do pola
         for (int i = 0; i < pocty.length; i++)
         {
-            if(pocty[i].equals("") == false)
+            if(pocty[i].getText().length() > 0)
             {
-                try
-                {
-                    if(Integer.parseInt(pocty[i].getText()) > 0)
-                        poctyArray.add(Integer.parseInt(pocty[i].getText()));
-                    else continue;
-                }
-                catch (NumberFormatException e)
-                {
-                    System.out.println(i);
-                }
+
+                if(Integer.parseInt(pocty[i].getText()) > 0)
+                    poctyArray.add(Integer.parseInt(pocty[i].getText()));
+                else continue;
+
+
             }
+
 
 
         }
@@ -431,8 +428,6 @@ public class VlsmController implements Initializable
                     if (!newValue.matches("\\d*")) {
                         pocty[i].setText(newValue.replaceAll("[^\\d]", ""));
                     }
-
-
                 }
             });
         }
@@ -444,8 +439,6 @@ public class VlsmController implements Initializable
                 if (!newValue.matches("\\d*")) {
                     prefixTF.setText(newValue.replaceAll("[^\\d]", ""));
                 }
-
-
             }
         });
 

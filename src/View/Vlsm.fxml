@@ -87,7 +87,7 @@
                         </VBox>
                      </children>
                   </HBox>
-                  <HBox id="vsudajeHB" prefHeight="100.0" prefWidth="200.0">
+                  <HBox id="vsudajeHB" alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <GridPane>
                           <columnConstraints>
