@@ -32,119 +32,45 @@ import java.util.ResourceBundle;
 public class VlsmController implements Initializable
 {
 
+    //tabulka a stlpce
+    @FXML
+    private TableView<Siet> table;
+
     @FXML
     private TableColumn<Siet, String> rozsah;
-
-    @FXML
-    private TextField n1;
-
-    @FXML
-    private TextField n2;
-
-    @FXML
-    private HBox tlacidlaHB;
-
-    @FXML
-    private Label funkciaL;
-
-    @FXML
-    private TextField n3;
 
     @FXML
     private TableColumn<Siet, String> prefix;
 
     @FXML
-    private TextField n4;
-
-    @FXML
-    private TextField n5;
-
-    @FXML
-    private VBox menuVB;
-
-    @FXML
-    private TextField n6;
-
-    @FXML
-    private TextField n7;
-
-    @FXML
-    private TextField n8;
-
-    @FXML
-    private TextField n9;
-
-    @FXML
-    private TextField n10;
-
-    @FXML
-    private TextField p10;
-
-    @FXML
-    private TextField n12;
-
-    @FXML
-    private TextField n11;
-
-    @FXML
-    private TextField p12;
-
-    @FXML
-    private TextField n14;
-
-    @FXML
-    private TextField n13;
-
-    @FXML
-    private TextField p11;
-
-    @FXML
-    private TextField n16;
-
-    @FXML
-    private TextField p14;
-
-    @FXML
-    private TextField p13;
-
-    @FXML
-    private TextField n15;
-
-    @FXML
-    private TextField p16;
-
-    @FXML
-    private TextField n18;
-
-    @FXML
-    private TextField p15;
-
-    @FXML
-    private TextField n17;
-
-    @FXML
-    private TextField p18;
-
-    @FXML
-    private TextField p17;
-
-    @FXML
-    private Button pmw;
-
-    @FXML
-    private Button enter;
-
-    @FXML
-    private Button vlsm;
-
-    @FXML
     private TableColumn<Siet, String> pocet;
 
+    @FXML
+    private TableColumn<Siet, String> bc;
+
+    @FXML
+    private TableColumn<Siet, String> sie;
+
+    @FXML
+    private TableColumn<Siet, String> nazov;
+
+    @FXML
+    private TableColumn<Siet, String> pocetP;
+
+    @FXML
+    private TableColumn<Siet, String> maska;
+
+
+    //textfieldy pre zadavanie udajov
     @FXML
     private TextField prefixTF;
 
     @FXML
-    private TableColumn<Siet, String> bc;
+    private TextField adresaTF;
+
+    private TextField[] pocty;
+
+    private TextField[] nazvy;
 
     @FXML
     private TextField p1;
@@ -168,16 +94,111 @@ public class VlsmController implements Initializable
     private TextField p7;
 
     @FXML
-    private HBox natovHB;
-
-    @FXML
     private TextField p8;
 
     @FXML
     private TextField p9;
 
     @FXML
-    private TableColumn<Siet, String> sie;
+    private TextField p10;
+
+    @FXML
+    private TextField p11;
+
+    @FXML
+    private TextField p12;
+
+    @FXML
+    private TextField p13;
+
+    @FXML
+    private TextField p14;
+
+    @FXML
+    private TextField p15;
+
+    @FXML
+    private TextField p16;
+
+    @FXML
+    private TextField p17;
+
+    @FXML
+    private TextField p18;
+
+
+    @FXML
+    private TextField n1;
+
+    @FXML
+    private TextField n2;
+
+    @FXML
+    private TextField n3;
+
+    @FXML
+    private TextField n4;
+
+    @FXML
+    private TextField n5;
+
+    @FXML
+    private TextField n6;
+
+    @FXML
+    private TextField n7;
+
+    @FXML
+    private TextField n8;
+
+    @FXML
+    private TextField n9;
+
+    @FXML
+    private TextField n10;
+
+    @FXML
+    private TextField n11;
+
+    @FXML
+    private TextField n12;
+
+    @FXML
+    private TextField n13;
+
+    @FXML
+    private TextField n14;
+
+    @FXML
+    private TextField n15;
+
+    @FXML
+    private TextField n16;
+
+    @FXML
+    private TextField n17;
+
+    @FXML
+    private TextField n18;
+
+
+    //Lable
+    @FXML
+    private Label chybaL;
+
+    @FXML
+    private Label funkciaL;
+
+    @FXML
+    private Label nazovL;
+
+
+    //zatial nepotrebne
+    @FXML
+    private HBox tlacidlaHB;
+
+    @FXML
+    private HBox natovHB;
 
     @FXML
     private HBox enterHB;
@@ -186,31 +207,7 @@ public class VlsmController implements Initializable
     private HBox vsudajeHB;
 
     @FXML
-    private TableColumn<Siet, String> pocetP;
-
-    @FXML
-    private TableColumn<Siet, String> maska;
-
-    @FXML
-    private TextField adresaTF;
-
-    @FXML
-    private Label chybaL;
-
-    @FXML
-    private Button subnetting1;
-
-    @FXML
-    private Button subnetting2;
-
-    @FXML
-    private Button ipinfo;
-
-    @FXML
-    private TableView<Siet> table;
-
-    @FXML
-    private Button sustavy;
+    private VBox menuVB;
 
     @FXML
     private VBox vyudajeVB;
@@ -219,17 +216,15 @@ public class VlsmController implements Initializable
     private HBox chybaHB;
 
     @FXML
-    private Button x;
-
-    @FXML
-    private Label nazovL;
-
-    @FXML
     private HBox funkciaHB;
 
-    private TextField[] pocty;
 
-    private TextField[] nazvy;
+
+
+
+
+
+
 
     @FXML
     void ipinfoAction(ActionEvent event) throws IOException {
@@ -347,7 +342,8 @@ public class VlsmController implements Initializable
             chybaL.setText("Nebol zadaný prefix");
 
         //pole do ktoreho sa ulozia vsetky zadane pocty
-        ArrayList<Integer> poctyArray = new ArrayList<>();
+        ArrayList<String> poctyArray = new ArrayList<>();
+        ArrayList<String> nazvySietiArray = new ArrayList<>();
         //uloznie poctov do pola
         for (int i = 0; i < pocty.length; i++)
         {
@@ -355,29 +351,32 @@ public class VlsmController implements Initializable
             {
 
                 if(Integer.parseInt(pocty[i].getText()) > 0)
-                    poctyArray.add(Integer.parseInt(pocty[i].getText()));
+                {
+                    poctyArray.add(pocty[i].getText());
+                    nazvySietiArray.add(nazvy[i].getText());
+                }
+
                 else continue;
 
 
             }
 
-
-
         }
         //jednorozmerne pole kde sa ulozia finalne pocty
-        int[] finallPocty = new int[poctyArray.size()];
-        for(int u = 0; u < finallPocty.length; u++)
+        String[][] finallSiete = new String[poctyArray.size()][2];
+        for(int u = 0; u < finallSiete.length; u++)
         {
-            finallPocty[u] = poctyArray.get(u);
+            finallSiete[u][0] = poctyArray.get(u);
+            finallSiete[u][1] = nazvySietiArray.get(u);
         }
 
         //ak bude zadanych viac ako 0 sieti tak vypocita
-        if (finallPocty.length > 0)
+        if (finallSiete.length > 0)
         {
             try
             {
                 ObservableList<Siet> siete;
-                siete = Vlsm.vlsm(adresaTF.getText(), Integer.parseInt(prefixTF.getText()), finallPocty);
+                siete = Vlsm.vlsm(adresaTF.getText(), Integer.parseInt(prefixTF.getText()), finallSiete);
                 table.setItems(siete);
                 table.setVisible(true);
                 chybaL.setText("");
@@ -444,6 +443,8 @@ public class VlsmController implements Initializable
 
         //nastavenie stlpcov v tabulke
         table.setVisible(false);
+        //stlpec s nazvom
+        nazov.setCellValueFactory(new PropertyValueFactory<>("NazovSiete"));
         //stlpec so sietovou adresou
         sie.setCellValueFactory(new PropertyValueFactory<>("SietovaAdresaForTable"));
 

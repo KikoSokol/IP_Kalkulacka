@@ -26,33 +26,18 @@ import java.util.ResourceBundle;
 public class IPInfoController implements Initializable
 {
 
-    @FXML
-    private Label bc;
-
-    @FXML
-    private Label poradie;
-
-    @FXML
-    private HBox tlacidlaHB;
-
-    @FXML
-    private Label funkciaL;
-
+    //textfieldy pre vstupne udaje
     @FXML
     private TextField prefixTF;
 
     @FXML
-    private VBox menuVB;
+    private TextField maskaTF;
 
     @FXML
-    private HBox natovHB;
+    private TextField adresaTF;
 
-    @FXML
-    private Label typ;
 
-    @FXML
-    private Label nText;
-
+    //lable
     @FXML
     private Label rozsah;
 
@@ -60,34 +45,75 @@ public class IPInfoController implements Initializable
     private Label prefix;
 
     @FXML
-    private Label nazovTFL;
+    private Label typ;
 
     @FXML
     private Label sie;
 
     @FXML
-    private HBox enterHB;
+    private Label pocetP;
+
+    @FXML
+    private Label bc;
+
+    @FXML
+    private Label poradie;
 
     @FXML
     private Label wildcard;
 
     @FXML
-    private HBox vsudajeHB;
-
-    @FXML
-    private Label pocetP;
-
-    @FXML
-    private TextField maskaTF;
-
-    @FXML
     private Label maska;
 
     @FXML
-    private TextField adresaTF;
+    private Label bcB;
 
     @FXML
-    private Label prva;
+    private Label maskaB;
+
+    @FXML
+    private Label sieB;
+
+    @FXML
+    private Label wildcardB;
+
+    @FXML
+    private Label trieda;
+
+    @FXML
+    private Label pocet;
+
+    @FXML
+    private Label chybaL;
+
+
+    //zatial nepotrebne veci
+    @FXML
+    private HBox tlacidlaHB;
+
+    @FXML
+    private HBox natovHB;
+
+    @FXML
+    private HBox enterHB;
+
+    @FXML
+    private HBox vsudajeHB;
+
+    @FXML
+    private HBox funkciaHB;
+
+    @FXML
+    private HBox chybaHB;
+
+    @FXML
+    private VBox menuVB;
+
+    @FXML
+    private VBox vyudajeVB;
+
+    @FXML
+    private GridPane vyudajeTab;
 
     @FXML
     private Button subnetting1;
@@ -105,49 +131,29 @@ public class IPInfoController implements Initializable
     private Button ipinfo;
 
     @FXML
-    private Label posledna;
-
-    @FXML
     private Button sustavy;
-
-    @FXML
-    private Label bcB;
-
-    @FXML
-    private Label maskaB;
-
-    @FXML
-    private Label sieB;
 
     @FXML
     private Button vlsm;
 
     @FXML
-    private VBox vyudajeVB;
+    private Label posledna;
 
     @FXML
-    private Label pocet;
+    private Label nText;
 
     @FXML
-    private GridPane vyudajeTab;
+    private Label prva;
 
     @FXML
-    private Label wildcardB;
+    private Label nazovTFL;
+
+    @FXML
+    private Label funkciaL;
 
     @FXML
     private Label nazovL;
 
-    @FXML
-    private Label trieda;
-
-    @FXML
-    private HBox funkciaHB;
-    
-    @FXML
-    private HBox chybaHB;
-    
-    @FXML
-    private Label chybaL;
 
     @FXML
     void ipinfoAction(ActionEvent event) throws IOException

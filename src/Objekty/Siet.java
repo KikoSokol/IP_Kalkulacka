@@ -7,6 +7,7 @@ import java.io.IOException;
 
 public class Siet
 {
+    private String nazovSiete;
     private String typZadanejAdresy;
     private int[] sietovaAdresa;
     private int[] broadcastovaAdresa;
@@ -38,6 +39,42 @@ public class Siet
         this.poslednaPouzitelnaAdresa = getFirstOrLastAddress(zadanaAdresa, this.prefix, false);
         this.pocetAdries = getSpaceAddress(this.prefix);
         this.pocetPouzitelnychAdries = this.pocetAdries - 2;
+
+        if(zadanaAdresa[0] == sietovaAdresa[0] && zadanaAdresa[1] == sietovaAdresa[1] && zadanaAdresa[2] == sietovaAdresa[2] && zadanaAdresa[3] == sietovaAdresa[3] )
+            typZadanejAdresy = "Sieťová adresa";
+        else if (zadanaAdresa[0] == broadcastovaAdresa[0] && zadanaAdresa[1] == broadcastovaAdresa[1] && zadanaAdresa[2] == broadcastovaAdresa[2] && zadanaAdresa[3] == broadcastovaAdresa[3] )
+            typZadanejAdresy = "Broadcastová adresa";
+        else
+            typZadanejAdresy = "Hostová adresa";
+
+        if(this.prefix == 32)
+        {
+            this.specialnaHostova = true;
+            this.poradie = 1;
+            this.pocetAdries = 1;
+            this.pocetPouzitelnychAdries = 1;
+            typZadanejAdresy = "Hostová adresa";
+        }
+
+    }
+
+    //konstruktor1
+    public Siet(String siet, int prefix, String nazovSiete) throws zlaDlzkaAMWException, zlyOctetException, IOException, zlyPrefixException
+    {
+        prevody = new Prevody();
+        int[] zadanaAdresa = getIntAddress(siet);
+        this.prefix = getPrefix(prefix);
+        this.sietovaAdresa = getNetOrBroAddress(zadanaAdresa,this.prefix,true);
+        this.broadcastovaAdresa = getNetOrBroAddress(zadanaAdresa, this.prefix, false);
+        this.maska = fromPrefixToMask(this.prefix);
+        this.wildcard = fromMaskToWildcard(this.maska);
+        this.trieda = setTrieda(zadanaAdresa);
+        this.poradie = poradie(zadanaAdresa, prefix);
+        this.prvaPouzitelnaAdresa = getFirstOrLastAddress(zadanaAdresa, this.prefix,true);
+        this.poslednaPouzitelnaAdresa = getFirstOrLastAddress(zadanaAdresa, this.prefix, false);
+        this.pocetAdries = getSpaceAddress(this.prefix);
+        this.pocetPouzitelnychAdries = this.pocetAdries - 2;
+        this.nazovSiete = nazovSiete;
 
         if(zadanaAdresa[0] == sietovaAdresa[0] && zadanaAdresa[1] == sietovaAdresa[1] && zadanaAdresa[2] == sietovaAdresa[2] && zadanaAdresa[3] == sietovaAdresa[3] )
             typZadanejAdresy = "Sieťová adresa";
@@ -379,6 +416,9 @@ public class Siet
         return outAddress;
     }
 
+    public String getNazovSiete() {
+        return nazovSiete;
+    }
 
     // metoda meni oktet v metode getNetOrBroAddress
     private static void changeOctet(int[] octet,int fromThisPrefix,int numOctet,int border,boolean net)	//octet,fromThisPrefix,number octet,border,net

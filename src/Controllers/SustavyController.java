@@ -25,6 +25,7 @@ import java.util.ResourceBundle;
 public class SustavyController implements Initializable
 {
 
+    //textfieldy
     @FXML
     private TextField binarna;
 
@@ -32,34 +33,42 @@ public class SustavyController implements Initializable
     private TextField sestnastkova;
 
     @FXML
+    private TextField osmickova;
+
+    @FXML
+    private TextField desiatkova;
+
+
+    //zatial nepotrebne
+    @FXML
     private HBox tlacidlaHB;
-
-    @FXML
-    private Label funkciaL;
-
-    @FXML
-    private Button vlsm;
-
-    @FXML
-    private VBox menuVB;
 
     @FXML
     private HBox natovHB;
 
     @FXML
-    private VBox vyudajeVB;
+    private HBox funkciaHB;
+
+    @FXML
+    private Label funkciaL;
 
     @FXML
     private Label chybaL;
 
     @FXML
-    private TextField desiatkova;
+    private Label nazovL;
+
+    @FXML
+    private VBox menuVB;
+
+    @FXML
+    private VBox vyudajeVB;
+
+    @FXML
+    private Button vlsm;
 
     @FXML
     private Button subnetting1;
-
-    @FXML
-    private Label nazovL;
 
     @FXML
     private Button pmw;
@@ -71,13 +80,9 @@ public class SustavyController implements Initializable
     private Button ipinfo;
 
     @FXML
-    private TextField osmickova;
-
-    @FXML
     private Button sustavy;
 
-    @FXML
-    private HBox funkciaHB;
+
 
     @FXML
     void ipinfoAction(ActionEvent event) throws IOException {

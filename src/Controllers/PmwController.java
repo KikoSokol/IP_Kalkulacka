@@ -28,29 +28,13 @@ import java.util.ResourceBundle;
 public class PmwController implements Initializable
 {
 
+    //label
     @FXML
-    private Button zMaska;
+    private Label chybaL;
 
-    @FXML
-    private HBox tlacidlaHB;
-
-    @FXML
-    private Label funkciaL;
-
+    //textfieldy pre vstupne udaje
     @FXML
     private TextField prefix;
-
-    @FXML
-    private Button vlsm;
-
-    @FXML
-    private VBox menuVB;
-
-    @FXML
-    private HBox natovHB;
-
-    @FXML
-    private VBox vyudajeVB;
 
     @FXML
     private TextField wildcard;
@@ -58,17 +42,19 @@ public class PmwController implements Initializable
     @FXML
     private TextField maska;
 
+
+    //zatial nepotrebne veci
+    @FXML
+    private Button zMaska;
+
+    @FXML
+    private Button vlsm;
+
     @FXML
     private Button zWildcard;
 
     @FXML
-    private Label chybaL;
-
-    @FXML
     private Button subnetting1;
-
-    @FXML
-    private Label nazovL;
 
     @FXML
     private Button pmw;
@@ -86,7 +72,30 @@ public class PmwController implements Initializable
     private Button sustavy;
 
     @FXML
+    private VBox menuVB;
+
+    @FXML
+    private VBox vyudajeVB;
+
+    @FXML
+    private HBox natovHB;
+
+    @FXML
     private HBox funkciaHB;
+
+    @FXML
+    private HBox tlacidlaHB;
+
+    @FXML
+    private Label funkciaL;
+
+    @FXML
+    private Label nazovL;
+
+
+
+
+
 
     @FXML
     void ipinfoAction(ActionEvent event) throws IOException {

@@ -30,35 +30,15 @@ import java.util.ResourceBundle;
 public class Subnetting2Controller implements Initializable
 {
 
+    //tabulka a stlpce
     @FXML
-    private TableColumn<Siet, String> rozsah;
-
-    @FXML
-    private TableColumn<Siet, String> bc;
-
-    @FXML
-    private HBox tlacidlaHB;
-
-    @FXML
-    private Label funkciaL;
+    private TableView<Siet> table;
 
     @FXML
     private TableColumn<Siet, String> prefix;
 
     @FXML
-    private VBox menuVB;
-
-    @FXML
-    private HBox natovHB;
-
-    @FXML
     private TableColumn<Siet, String> sie;
-
-    @FXML
-    private HBox enterHB;
-
-    @FXML
-    private HBox vsudajeHB;
 
     @FXML
     private TableColumn<Siet, String> pocetP;
@@ -67,10 +47,40 @@ public class Subnetting2Controller implements Initializable
     private TableColumn<Siet, String> maska;
 
     @FXML
+    private TableColumn<Siet, String> pocet;
+
+    @FXML
+    private TableColumn<Siet, String> rozsah;
+
+    @FXML
+    private TableColumn<Siet, String> bc;
+
+    //textfieldy pre vstupne udaje
+    @FXML
     private TextField adresaTF;
 
     @FXML
+    private TextField pocetZariadeniTF;
+
+    @FXML
+    private TextField pocetTF;
+
+    @FXML
+    private TextField prefixTF;
+
+    //label
+    @FXML
     private Label chybaL;
+
+
+    //zatial nepotrebne
+    @FXML
+    private Label funkciaL;
+
+    @FXML
+    private Label nazovL;
+
+
 
     @FXML
     private Button subnetting1;
@@ -88,38 +98,34 @@ public class Subnetting2Controller implements Initializable
     private Button ipinfo;
 
     @FXML
-    private TableView<Siet> table;
-
-    @FXML
     private Button sustavy;
-
-    @FXML
-    private TextField pocetZariadeniTF;
-
-    @FXML
-    private TextField pocetTF;
 
     @FXML
     private Button vlsm;
 
     @FXML
+    private Button x;
+
+    @FXML
     private VBox vyudajeVB;
 
     @FXML
-    private TableColumn<?, ?> pocet;
+    private VBox menuVB;
 
     @FXML
     private HBox chybaHB;
 
     @FXML
-    private TextField prefixTF;
+    private HBox natovHB;
 
     @FXML
-    private Button x;
+    private HBox tlacidlaHB;
 
     @FXML
-    private Label nazovL;
+    private HBox enterHB;
 
+    @FXML
+    private HBox vsudajeHB;
     @FXML
     private HBox funkciaHB;
 
