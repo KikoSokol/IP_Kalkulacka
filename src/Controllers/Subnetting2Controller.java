@@ -55,6 +55,9 @@ public class Subnetting2Controller implements Initializable
     @FXML
     private TableColumn<Siet, String> bc;
 
+    @FXML
+    private TableColumn<Siet, String> nazov;
+
     //textfieldy pre vstupne udaje
     @FXML
     private TextField adresaTF;
@@ -260,10 +263,11 @@ public class Subnetting2Controller implements Initializable
                 {
                     siete = Subneting.sub2(adresaTF.getText(),Integer.parseInt(prefixTF.getText()), Integer.parseInt(pocetZariadeniTF.getText()),Integer.parseInt(pocetTF.getText()));
                 }
-
                 table.setItems(siete);
                 table.setVisible(true);
                 chybaL.setText("");
+                if (siete.size() < Integer.parseInt(pocetTF.getText()))
+                    chybaL.setText("Táto sieť sa dá rozdeliť iba na " + siete.size() + " podsiete");
             }
             catch (zlaDlzkaAMWException e)
             {
@@ -288,6 +292,10 @@ public class Subnetting2Controller implements Initializable
             catch (MalaSietExcepiton e)
             {
                 chybaL.setText("Sieť sa nedá rozdeliť.");
+            }
+            catch (NumberFormatException e)
+            {
+
             }
             catch (Exception e)
             {
@@ -321,8 +329,11 @@ public class Subnetting2Controller implements Initializable
         //stlpec s poctom pouzitelnych adries
         pocetP.setCellValueFactory(new PropertyValueFactory<>("PocetPouzitelnychAdries"));
 
-        //stlpes s rozsahom
+        //stlpec s rozsahom
         rozsah.setCellValueFactory(new PropertyValueFactory<>("Rozsah"));
+
+        //stlpec s nazvom
+        nazov.setCellValueFactory(new PropertyValueFactory<>("NazovSiete"));
 
         //obmezenie znakov okrem cisel na textfieldy
         prefixTF.textProperty().addListener(new ChangeListener<String>() {

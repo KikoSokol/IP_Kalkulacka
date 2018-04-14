@@ -143,7 +143,9 @@ public class Subneting
                             adresa[1] = octet2[b];
                             adresa[2] = octet3[c];
                             adresa[3] = octet4[d];
-                            vysledneAdresy.add(new Siet(adresa,druhyPrefix));
+                            Siet sietTemp = new Siet(adresa,druhyPrefix);
+                            sietTemp.setNazovSiete("Sieť " + (stop + 1));
+                            vysledneAdresy.add(sietTemp);
                             stop++;
                             if (stop == pocet)
                                 break;
@@ -224,7 +226,9 @@ public class Subneting
                         adresa[1] = octet2[b];
                         adresa[2] = octet3[c];
                         adresa[3] = octet4[d];
-                        vysledneAdresy.add(new Siet(adresa,druhyPrefix));
+                        Siet sietTemp = new Siet(adresa,druhyPrefix);
+                        sietTemp.setNazovSiete("Sieť " + (stop + 1));
+                        vysledneAdresy.add(sietTemp);
                         stop++;
                         if (stop == pocet)
                             break;

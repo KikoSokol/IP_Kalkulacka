@@ -745,9 +745,7 @@ public class Siet
         return sBroadcastovaAdresa;
     }
 
-
-
-
-
-
+    public void setNazovSiete(String nazovSiete) {
+        this.nazovSiete = nazovSiete;
+    }
 }

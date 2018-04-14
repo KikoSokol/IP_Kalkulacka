@@ -50,11 +50,15 @@ public class Subnetting1Controller implements Initializable
 
     @FXML
     private TableColumn<Siet, String> pocet;
+
     @FXML
     private TableColumn<Siet, String> rozsah;
 
     @FXML
     private TableColumn<Siet, String> bc;
+
+    @FXML
+    private TableColumn<Siet, String> nazov;
 
     //textfieldy pre vstupne udaje
     @FXML
@@ -320,8 +324,11 @@ public class Subnetting1Controller implements Initializable
         //stlpec s poctom pouzitelnych adries
         pocetP.setCellValueFactory(new PropertyValueFactory<>("PocetPouzitelnychAdries"));
 
-        //stlpes s rozsahom
+        //stlpec s rozsahom
         rozsah.setCellValueFactory(new PropertyValueFactory<>("Rozsah"));
+
+        //stlpec s nazvom
+        nazov.setCellValueFactory(new PropertyValueFactory<>("NazovSiete"));
 
         //obmezenie znakov okrem cisel na textfieldy
         prefixTF.textProperty().addListener(new ChangeListener<String>() {
