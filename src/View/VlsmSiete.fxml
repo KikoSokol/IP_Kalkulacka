@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.VlsmSieteController">
+   <children>
+      <BorderPane blendMode="MULTIPLY" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <VBox fx:id="menuVB" prefHeight="783.0" prefWidth="1280.0" spacing="10.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox id="nazovHB" fx:id="natovHB" alignment="CENTER" prefHeight="68.0" prefWidth="1280.0">
+                     <children>
+                        <Label id="nazovL" fx:id="nazovL" alignment="CENTER" contentDisplay="CENTER" prefHeight="68.0" prefWidth="1280.0" text="VLSM - Rozdelené siete">
+                           <font>
+                              <Font name="Arial Bold" size="47.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <VBox id="vyudajeVB" fx:id="vyudajeVB" alignment="TOP_CENTER" prefHeight="702.0" prefWidth="1280.0">
+                     <children>
+                        <TableView id="table" fx:id="table" maxWidth="1487.0" prefHeight="685.0" prefWidth="1487.0">
+                          <columns>
+                              <TableColumn fx:id="nazov" prefWidth="186.0" text="Názov" />
+                            <TableColumn fx:id="sie" maxWidth="223.0" prefWidth="180.0" text="Sieťová adresa" />
+                            <TableColumn fx:id="prefix" prefWidth="63.0" text="Prefix" />
+                              <TableColumn fx:id="maska" maxWidth="271.0" minWidth="0.0" prefWidth="180.0" text="Maska" />
+                              <TableColumn fx:id="bc" maxWidth="367.0" prefWidth="180.0" text="Broadcastova adresa" />
+                              <TableColumn fx:id="pocet" maxWidth="276.0" minWidth="0.0" prefWidth="125.0" text="Počet adries" />
+                              <TableColumn fx:id="pocetP" maxWidth="401.0" minWidth="0.0" prefWidth="138.0" text="Použiteľné adresy" />
+                              <TableColumn fx:id="rozsah" maxWidth="695.0" minWidth="0.0" prefWidth="433.0" text="Rozsah použíteľných adries" />
+                          </columns>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </TableView>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+         </top>
+      </BorderPane>
+   </children>
+</AnchorPane>

@@ -58,7 +58,7 @@
                   </HBox>
                   <HBox id="vsudajeHB" fx:id="vsudajeHB" alignment="BOTTOM_CENTER" prefHeight="95.0" prefWidth="1280.0" spacing="10.0">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#xAction" prefHeight="55.0" prefWidth="55.0" text="X" fx:id="x" />
+                        <Button mnemonicParsing="false" onAction="#xAction" prefHeight="55.0" prefWidth="70.0" text="Vymaž" fx:id="x" />
                         <VBox alignment="BOTTOM_CENTER" prefHeight="84.0" prefWidth="313.33">
                            <children>
                               <Label id="nazovTF" alignment="CENTER" prefHeight="21.0" prefWidth="313.0" text="IP Adresa">
@@ -120,8 +120,8 @@
                   <GridPane id="vyudajeTab" fx:id="vyudajeTab" alignment="CENTER" prefHeight="302.0" prefWidth="500.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="270.0" minWidth="10.0" prefWidth="272.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="336.0" minWidth="10.0" prefWidth="336.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="370.0" minWidth="10.0" prefWidth="335.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="400.0" minWidth="10.0" prefWidth="331.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="471.0" minWidth="10.0" prefWidth="439.0" />
                     </columnConstraints>
                     <rowConstraints>
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -193,14 +193,14 @@
                               <Font name="System Bold" size="20.0" />
                            </font>
                         </Label>
-                        <HBox alignment="CENTER_LEFT" prefHeight="10.0" prefWidth="200.0" spacing="20.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                        <HBox alignment="CENTER_LEFT" prefHeight="43.0" prefWidth="314.0" spacing="20.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
                            <children>
-                              <Label id="nText" prefHeight="43.0" prefWidth="116.0" text="Typ adresy:">
+                              <Label id="nText" prefHeight="43.0" prefWidth="142.0" text="Typ adresy:">
                                  <font>
                                     <Font name="System Bold" size="20.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="typ" contentDisplay="RIGHT" prefHeight="43.0" prefWidth="185.0">
+                              <Label fx:id="typ" contentDisplay="RIGHT" prefHeight="43.0" prefWidth="179.0">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
@@ -214,7 +214,7 @@
                                     <Font name="System Bold" size="20.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="trieda" prefHeight="39.0" prefWidth="100.0">
+                              <Label fx:id="trieda" prefHeight="39.0" prefWidth="197.0">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
@@ -228,7 +228,7 @@
                                     <Font name="System Bold" size="20.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="poradie" prefHeight="43.0" prefWidth="100.0">
+                              <Label fx:id="poradie" prefHeight="43.0" prefWidth="164.0">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
@@ -242,7 +242,7 @@
                                     <Font name="System Bold" size="20.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="pocet" prefHeight="43.0" prefWidth="79.0">
+                              <Label fx:id="pocet" prefHeight="43.0" prefWidth="258.0">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
@@ -256,7 +256,7 @@
                                     <Font name="System Bold" size="20.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="pocetP" prefHeight="47.0" prefWidth="170.0">
+                              <Label fx:id="pocetP" prefHeight="43.0" prefWidth="182.0">
                                  <font>
                                     <Font size="20.0" />
                                  </font>

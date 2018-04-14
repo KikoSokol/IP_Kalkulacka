@@ -59,7 +59,7 @@
                   </HBox>
                   <HBox id="vsudajeHB" fx:id="vsudajeHB" alignment="BOTTOM_CENTER" prefHeight="71.0" prefWidth="1280.0" spacing="10.0">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#xAction" prefHeight="55.0" prefWidth="55.0" text="X" fx:id="x" />
+                        <Button mnemonicParsing="false" onAction="#xAction" prefHeight="55.0" prefWidth="70.0" text="Vymaž" fx:id="x" />
                         <VBox alignment="BOTTOM_CENTER" prefHeight="84.0" prefWidth="313.33">
                            <children>
                               <Label id="nazovTF" alignment="CENTER" prefHeight="21.0" prefWidth="313.0" text="Sieťová Adresa">
@@ -118,7 +118,7 @@
          <center>
             <VBox id="vyudajeVB" fx:id="vyudajeVB" alignment="TOP_CENTER" prefHeight="464.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
                <children>
-                  <TableView id="table" fx:id="table" maxWidth="1280.0" prefHeight="267.0" prefWidth="1280.0">
+                  <TableView id="table" fx:id="table" maxWidth="1280.0" prefHeight="421.0" prefWidth="1280.0">
                     <columns>
                       <TableColumn fx:id="sie" maxWidth="150.0" prefWidth="150.0" text="Sieťová adresa" />
                       <TableColumn fx:id="prefix" prefWidth="108.0" text="Prefix" />

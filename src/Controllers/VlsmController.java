@@ -3,9 +3,11 @@ package Controllers;
 import Exceptions.*;
 import Objekty.Pmw;
 import Objekty.Siet;
+import Okna.VlsmSieteOkno;
 import Vypocitavanie.Vlsm;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,12 +16,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseButton;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -32,170 +31,23 @@ import java.util.ResourceBundle;
 public class VlsmController implements Initializable
 {
 
-    //tabulka a stlpce
     @FXML
-    private TableView<Siet> table;
-
-    @FXML
-    private TableColumn<Siet, String> rozsah;
+    private Button pridajSiet;
 
     @FXML
-    private TableColumn<Siet, String> prefix;
-
-    @FXML
-    private TableColumn<Siet, String> pocet;
-
-    @FXML
-    private TableColumn<Siet, String> bc;
-
-    @FXML
-    private TableColumn<Siet, String> sie;
-
-    @FXML
-    private TableColumn<Siet, String> nazov;
-
-    @FXML
-    private TableColumn<Siet, String> pocetP;
-
-    @FXML
-    private TableColumn<Siet, String> maska;
-
-
-    //textfieldy pre zadavanie udajov
-    @FXML
-    private TextField prefixTF;
-
-    @FXML
-    private TextField adresaTF;
-
-    private TextField[] pocty;
-
-    private TextField[] nazvy;
-
-    @FXML
-    private TextField p1;
-
-    @FXML
-    private TextField p2;
-
-    @FXML
-    private TextField p3;
-
-    @FXML
-    private TextField p4;
-
-    @FXML
-    private TextField p5;
-
-    @FXML
-    private TextField p6;
-
-    @FXML
-    private TextField p7;
-
-    @FXML
-    private TextField p8;
-
-    @FXML
-    private TextField p9;
-
-    @FXML
-    private TextField p10;
-
-    @FXML
-    private TextField p11;
-
-    @FXML
-    private TextField p12;
-
-    @FXML
-    private TextField p13;
-
-    @FXML
-    private TextField p14;
-
-    @FXML
-    private TextField p15;
-
-    @FXML
-    private TextField p16;
-
-    @FXML
-    private TextField p17;
-
-    @FXML
-    private TextField p18;
-
-
-    @FXML
-    private TextField n1;
-
-    @FXML
-    private TextField n2;
-
-    @FXML
-    private TextField n3;
-
-    @FXML
-    private TextField n4;
-
-    @FXML
-    private TextField n5;
-
-    @FXML
-    private TextField n6;
-
-    @FXML
-    private TextField n7;
-
-    @FXML
-    private TextField n8;
-
-    @FXML
-    private TextField n9;
-
-    @FXML
-    private TextField n10;
-
-    @FXML
-    private TextField n11;
-
-    @FXML
-    private TextField n12;
-
-    @FXML
-    private TextField n13;
-
-    @FXML
-    private TextField n14;
-
-    @FXML
-    private TextField n15;
-
-    @FXML
-    private TextField n16;
-
-    @FXML
-    private TextField n17;
-
-    @FXML
-    private TextField n18;
-
-
-    //Lable
-    @FXML
-    private Label chybaL;
+    private HBox tlacidlaHB;
 
     @FXML
     private Label funkciaL;
 
     @FXML
-    private Label nazovL;
+    private ListView<String> siete;
 
-
-    //zatial nepotrebne
     @FXML
-    private HBox tlacidlaHB;
+    private Button vymazVS;
+
+    @FXML
+    private VBox menuVB;
 
     @FXML
     private HBox natovHB;
@@ -207,24 +59,55 @@ public class VlsmController implements Initializable
     private HBox vsudajeHB;
 
     @FXML
-    private VBox menuVB;
+    private TextField adresaTF;
 
     @FXML
-    private VBox vyudajeVB;
+    private Label chybaL;
+
+    @FXML
+    private Button subnetting1;
+
+    @FXML
+    private Button pmw;
+
+    @FXML
+    private Button subnetting2;
+
+    @FXML
+    private Button enter;
+
+    @FXML
+    private Button ipinfo;
+
+    @FXML
+    private Button sustavy;
+
+    @FXML
+    private HBox sieteHB;
+
+    @FXML
+    private Button vlsm;
+
+    @FXML
+    private TextField pocetZariadeni;
+
+    @FXML
+    private TextField nazovSiete;
 
     @FXML
     private HBox chybaHB;
 
     @FXML
+    private TextField prefixTF;
+
+    @FXML
+    private Button x;
+
+    @FXML
+    private Label nazovL;
+
+    @FXML
     private HBox funkciaHB;
-
-
-
-
-
-
-
-
 
     @FXML
     void ipinfoAction(ActionEvent event) throws IOException {
@@ -324,11 +207,52 @@ public class VlsmController implements Initializable
         adresaTF.setText("");
         prefixTF.setText("");
         chybaL.setText("");
-        table.getItems().clear();
-        table.setVisible(false);
-        for (int a = 0; a < pocty.length; a++)
+    }
+
+    public void vymazVS(ActionEvent event)
+    {
+        cisloSiete = 1;
+        nazovSiete.setText(pNazovSiete.concat(" " + cisloSiete));
+        pocetZariadeni.setText("");
+        siete.getItems().clear();
+        poctyArray.clear();
+        nazvySietiArray.clear();
+
+    }
+
+    private ArrayList<String> poctyArray = new ArrayList<>();
+    private ArrayList<String> nazvySietiArray = new ArrayList<>();
+    private ObservableList<String> sieteString = FXCollections.observableArrayList();
+    private int cisloSiete = 1;
+    private String pNazovSiete = "Sieť";
+
+    @FXML
+    void pridajSiet(ActionEvent event)
+    {
+        if(pocetZariadeni.getText().equals(""))
+            chybaL.setText("Nebol zadaný počet zariadení.");
+        else
         {
-            pocty[a].setText("");
+            boolean rovnakyNazovSiete = false;
+            for(int i = 0; i < nazvySietiArray.size(); i++)
+            {
+                if (nazvySietiArray.get(i).equals(nazovSiete.getText()))
+                    rovnakyNazovSiete = true;
+            }
+            if (rovnakyNazovSiete)
+                chybaL.setText("Sieť s týmto názvom už existuje.");
+            else
+            {
+                nazvySietiArray.add(nazovSiete.getText());
+                poctyArray.add(pocetZariadeni.getText());
+                sieteString.add(nazvySietiArray.get(nazvySietiArray.size() - 1).concat(": ").concat(poctyArray.get(poctyArray.size() - 1)).concat(" zariadení"));
+                siete.setItems(sieteString);
+                cisloSiete++;
+                nazovSiete.setText(pNazovSiete.concat(" " + cisloSiete));
+                pocetZariadeni.clear();
+                chybaL.setText("");
+            }
+
         }
     }
 
@@ -338,31 +262,11 @@ public class VlsmController implements Initializable
     {
         if(adresaTF.getText().equals(""))
             chybaL.setText("Nebola zadaná sieťová adresa");
-        if(prefix.getText().equals(""))
+        if(prefixTF.getText().equals(""))
             chybaL.setText("Nebol zadaný prefix");
 
-        //pole do ktoreho sa ulozia vsetky zadane pocty
-        ArrayList<String> poctyArray = new ArrayList<>();
-        ArrayList<String> nazvySietiArray = new ArrayList<>();
-        //uloznie poctov do pola
-        for (int i = 0; i < pocty.length; i++)
-        {
-            if(pocty[i].getText().length() > 0)
-            {
 
-                if(Integer.parseInt(pocty[i].getText()) > 0)
-                {
-                    poctyArray.add(pocty[i].getText());
-                    nazvySietiArray.add(nazvy[i].getText());
-                }
-
-                else continue;
-
-
-            }
-
-        }
-        //jednorozmerne pole kde sa ulozia finalne pocty
+        //finalne dvojrozmerne pole kde sa ulozia finalne pocty a nazvy
         String[][] finallSiete = new String[poctyArray.size()][2];
         for(int u = 0; u < finallSiete.length; u++)
         {
@@ -377,8 +281,7 @@ public class VlsmController implements Initializable
             {
                 ObservableList<Siet> siete;
                 siete = Vlsm.vlsm(adresaTF.getText(), Integer.parseInt(prefixTF.getText()), finallSiete);
-                table.setItems(siete);
-                table.setVisible(true);
+                VlsmSieteOkno vlsmSiete = new VlsmSieteOkno(siete);
                 chybaL.setText("");
 
             } catch (zlyPrefixException e)
@@ -411,29 +314,13 @@ public class VlsmController implements Initializable
             }
         }
         else
-            chybaL.setText("Neboli zadane siete");
+            chybaL.setText("Neboli zadane všetky potrebné údaje");
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
-        pocty = new TextField[]{p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18};
-        nazvy = new TextField[]{n1, n2, n3, n4, n5, n6, n7, n8, n9, n10, n11, n12, n13, n14, n15, n16, n17, n18};
 
-        //nastavenie automatickeho prepočitavania masky z prefixu, nedovolim pisať do prefixu znaky okrem cisel
-        for(int a = 0; a < pocty.length;a++)
-        {
-            int i = a;
-            pocty[a].textProperty().addListener(new ChangeListener<String>() {
-                @Override
-                public void changed(ObservableValue<? extends String> observable, String oldValue,
-                                    String newValue) {
-                    if (!newValue.matches("\\d*")) {
-                        pocty[i].setText(newValue.replaceAll("[^\\d]", ""));
-                    }
-                }
-            });
-        }
 
         prefixTF.textProperty().addListener(new ChangeListener<String>() {
             @Override
@@ -445,32 +332,44 @@ public class VlsmController implements Initializable
             }
         });
 
-        //nastavenie stlpcov v tabulke
-        table.setVisible(false);
-        //stlpec s nazvom
-        nazov.setCellValueFactory(new PropertyValueFactory<>("NazovSiete"));
-        //stlpec so sietovou adresou
-        sie.setCellValueFactory(new PropertyValueFactory<>("SietovaAdresaForTable"));
+        pocetZariadeni.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    pocetZariadeni.setText(newValue.replaceAll("[^\\d]", ""));
+                }
+            }
+        });
 
-        //stlpec s prefixom
-        prefix.setCellValueFactory(new PropertyValueFactory<>("Prefix"));
-
-        //stlpec s maskou
-        maska.setCellValueFactory(new PropertyValueFactory<>("Maska"));
-
-        //stlpec s broadcastovou adresou
-        bc.setCellValueFactory(new PropertyValueFactory<>("BroadcastovaAdresaForTable"));
-
-        //stlpec s poctom adries
-        pocet.setCellValueFactory(new PropertyValueFactory<>("PocetAdries"));
-
-        //stlpec s poctom pouzitelnych adries
-        pocetP.setCellValueFactory(new PropertyValueFactory<>("PocetPouzitelnychAdries"));
-
-        //stlpes s rozsahom
-        rozsah.setCellValueFactory(new PropertyValueFactory<>("Rozsah"));
-
+        //vymazavanie sieti
+        siete.setOnMouseClicked(event ->
+        {
+            if(event.getButton().equals(MouseButton.PRIMARY))
+            {
+                if(event.getClickCount() == 2)
+                {
+                    String[] rozdelenyString = siete.getSelectionModel().getSelectedItem().split("");
+                    String nazov = rozdelenyString[0].substring(rozdelenyString[0].length() - 1);
+                    String pocet = rozdelenyString[1].trim();
+                    for(int i = 0; i < sieteString.size(); i++)
+                    {
+                        if (sieteString.get(i).equals(siete.getSelectionModel().getSelectedItem()))
+                        {
+                            sieteString.remove(i);
+                            System.out.println(poctyArray.get(i));
+                            poctyArray.remove(i);
+                            System.out.println(nazvySietiArray.get(i));
+                            nazvySietiArray.remove(i);
+                        }
+                    }
+                   // System.out.println(siete.getSelectionModel().getSelectedItem());
+                }
+            }
+        });
 
 
     }
+
+
 }

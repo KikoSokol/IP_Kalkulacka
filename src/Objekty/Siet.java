@@ -379,7 +379,7 @@ public class Siet
 
         binaryAddress = o1.concat("." + o2).concat("." + o3).concat("." + o4);
 
-        if(this.specialnaHostova && co != 3)
+        if(this.specialnaHostova && co != 3 && co != 2)
             return "";
 
         return binaryAddress;
