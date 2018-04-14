@@ -405,6 +405,10 @@ public class VlsmController implements Initializable
             {
                 chybaL.setText("Zle zadaný vstupný údaj. Oktet IP adresy alebo môže obsahovať iba čísla.");
             }
+            catch(Exception e)
+            {
+                chybaL.setText("Nebola zadana sieťová adresa");
+            }
         }
         else
             chybaL.setText("Neboli zadane siete");
