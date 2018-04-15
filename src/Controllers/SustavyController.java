@@ -87,7 +87,7 @@ public class SustavyController implements Initializable
     @FXML
     void ipinfoAction(ActionEvent event) throws IOException {
         FXMLLoader ipInfoLoader = new FXMLLoader();
-        ipInfoLoader.setLocation(getClass().getResource("../View/IPInfo.fxml"));
+        ipInfoLoader.setLocation(getClass().getResource("/View/IPInfo.fxml"));
 
         Parent ipInfoParent = ipInfoLoader.load();
 
@@ -103,7 +103,7 @@ public class SustavyController implements Initializable
     @FXML
     void pmwAction(ActionEvent event) throws IOException {
         FXMLLoader pmwLoader = new FXMLLoader();
-        pmwLoader.setLocation(getClass().getResource("../View/Pmw.fxml"));
+        pmwLoader.setLocation(getClass().getResource("/View/Pmw.fxml"));
 
         Parent pmwParent = pmwLoader.load();
 
@@ -119,7 +119,7 @@ public class SustavyController implements Initializable
     @FXML
     void subnetting1Action(ActionEvent event) throws IOException {
         FXMLLoader subnetting1Loader = new FXMLLoader();
-        subnetting1Loader.setLocation(getClass().getResource("../View/Subnetting1.fxml"));
+        subnetting1Loader.setLocation(getClass().getResource("/View/Subnetting1.fxml"));
 
         Parent subnetting1Parent = subnetting1Loader.load();
 
@@ -135,7 +135,7 @@ public class SustavyController implements Initializable
     @FXML
     void subneting2Action(ActionEvent event) throws IOException {
         FXMLLoader subnetting2Loader = new FXMLLoader();
-        subnetting2Loader.setLocation(getClass().getResource("../View/Subnetting2.fxml"));
+        subnetting2Loader.setLocation(getClass().getResource("/View/Subnetting2.fxml"));
 
         Parent subnetting2Parent = subnetting2Loader.load();
 
@@ -151,7 +151,7 @@ public class SustavyController implements Initializable
     @FXML
     void vlsmAction(ActionEvent event) throws IOException {
         FXMLLoader vlsmLoader = new FXMLLoader();
-        vlsmLoader.setLocation(getClass().getResource("../View/Vlsm.fxml"));
+        vlsmLoader.setLocation(getClass().getResource("/View/Vlsm.fxml"));
 
         Parent vlsmParent = vlsmLoader.load();
 
@@ -167,7 +167,7 @@ public class SustavyController implements Initializable
     @FXML
     void sustavyAction(ActionEvent event) throws IOException {
         FXMLLoader sustavyLoader = new FXMLLoader();
-        sustavyLoader.setLocation(getClass().getResource("../View/Sustavy.fxml"));
+        sustavyLoader.setLocation(getClass().getResource("/View/Sustavy.fxml"));
 
         Parent sustavyParent = sustavyLoader.load();
 

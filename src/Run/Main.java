@@ -11,7 +11,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("../View/IPInfo.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/View/IPInfo.fxml"));
         primaryStage.setTitle("IP Info");
         primaryStage.setScene(new Scene(root));
         primaryStage.centerOnScreen();

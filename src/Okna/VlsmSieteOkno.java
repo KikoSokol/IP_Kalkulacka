@@ -20,7 +20,7 @@ public class VlsmSieteOkno
     private void zobraz(ObservableList<Siet> siete) throws IOException
     {
         FXMLLoader sieteLoader = new FXMLLoader();
-        sieteLoader.setLocation(getClass().getResource("../View/VlsmSiete.fxml"));
+        sieteLoader.setLocation(getClass().getResource("/View/VlsmSiete.fxml"));
         Parent root = sieteLoader.load();
 
         Scene scene = new Scene(root);
