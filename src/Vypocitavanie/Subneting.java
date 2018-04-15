@@ -13,8 +13,7 @@ public class Subneting
        Metoda na klasicky subneting
        rozdeli adresu na rovnako velke siete
         */
-    public static ObservableList<Siet> sub(String sietA, int prefix, long pocet) throws zlaDlzkaAMWException, zlyOctetException, zlyPrefixException, subnetingException, nullSubnetingException, velaRozdelenychSietiException, IOException, nieSietovaAdresaException
-    {
+    public static ObservableList<Siet> sub(String sietA, int prefix, long pocet) throws zlaDlzkaAMWException, zlyOctetException, zlyPrefixException, subnetingException, nullSubnetingException, velaRozdelenychSietiException, IOException, nieSietovaAdresaException, PismenoVOkteteAdresaException {
         Prevody prevody = new Prevody();
 
         //arraylist kde sa ulozia vsetky adresy
@@ -167,7 +166,7 @@ public class Subneting
         return vysledneAdresy;
 
     }
-    public static ObservableList<Siet> sub2(String sietA, int prefix, int maxZariadeni, int pocet) throws zlaDlzkaAMWException, zlyOctetException, IOException, zlyPrefixException, nieSietovaAdresaException, MalaSietExcepiton {
+    public static ObservableList<Siet> sub2(String sietA, int prefix, int maxZariadeni, int pocet) throws zlaDlzkaAMWException, zlyOctetException, IOException, zlyPrefixException, nieSietovaAdresaException, MalaSietExcepiton, PismenoVOkteteAdresaException {
         Prevody prevody = new Prevody();
 
         //arraylist kde sa ulozia vsetky adresy

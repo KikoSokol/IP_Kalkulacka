@@ -32,6 +32,8 @@ public class VlsmSieteOkno
         Stage sieteStage = new Stage();
         sieteStage.setTitle("VLSM - Rozdelené siete");
         sieteStage.setScene(scene);
+        Image ikona = new Image("file:Ikona.png");
+        sieteStage.getIcons().add(ikona);
         sieteStage.show();
     }
 }

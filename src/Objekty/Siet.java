@@ -24,8 +24,7 @@ public class Siet
     private boolean specialnaHostova = false;
 
     //konstruktor1
-    public Siet(String siet, int prefix) throws zlaDlzkaAMWException, zlyOctetException, IOException, zlyPrefixException
-    {
+    public Siet(String siet, int prefix) throws zlaDlzkaAMWException, zlyOctetException, zlyPrefixException, PismenoVOkteteAdresaException {
         prevody = new Prevody();
         int[] zadanaAdresa = getIntAddress(siet);
         this.prefix = getPrefix(prefix);
@@ -59,7 +58,7 @@ public class Siet
     }
 
     //konstruktor1
-    public Siet(String siet, int prefix, String nazovSiete) throws zlaDlzkaAMWException, zlyOctetException, IOException, zlyPrefixException
+    public Siet(String siet, int prefix, String nazovSiete) throws zlaDlzkaAMWException, zlyOctetException, zlyPrefixException, PismenoVOkteteAdresaException
     {
         prevody = new Prevody();
         int[] zadanaAdresa = getIntAddress(siet);
@@ -94,7 +93,7 @@ public class Siet
 
     }
 
-    public Siet(String siet, String maska) throws zlaDlzkaAMWException, zlaDlzkaMasky, zlyOctetException, IOException, zlaMaskaException
+    public Siet(String siet, String maska) throws zlaDlzkaAMWException, zlaDlzkaMasky, zlyOctetException, zlaMaskaException, PismenoVOkteteAdresaException, PismenoVOkteteMaskaException
     {
         prevody = new Prevody();
         int[] zadanaAdresa = getIntAddress(siet);
@@ -511,7 +510,7 @@ public class Siet
 
 
     // metoda ktora vrati int pole s adresou
-    public static int[] getIntAddress(String adresa) throws zlaDlzkaAMWException, zlyOctetException, IOException {
+    public static int[] getIntAddress(String adresa) throws zlaDlzkaAMWException, zlyOctetException, PismenoVOkteteAdresaException {
         String[] inout = adresa.split("\\.");
         int[] address = new int[4];
 
@@ -531,7 +530,9 @@ public class Siet
             }
             catch (NumberFormatException e)
             {
-                throw e;
+                PismenoVOkteteAdresaException r = new PismenoVOkteteAdresaException();
+                throw r;
+
             }
         }
 
@@ -553,7 +554,7 @@ public class Siet
     }
 
     // Metoda vrati int pole s maskou
-    public int[] getIntMaska(String maska) throws zlaDlzkaMasky, zlaMaskaException {
+    public int[] getIntMaska(String maska) throws zlaDlzkaMasky, zlaMaskaException, PismenoVOkteteMaskaException {
         String[] inout = maska.split("\\.");
 
         int[] intMaska = new int[4];
@@ -574,7 +575,8 @@ public class Siet
             }
             catch (NumberFormatException e)
             {
-                throw e;
+                PismenoVOkteteMaskaException r = new PismenoVOkteteMaskaException();
+                throw r;
             }
         }
         if(intMaska[0] == 255 && intMaska[1] == 255 && intMaska[2] == 255 && intMaska[3] == 255)

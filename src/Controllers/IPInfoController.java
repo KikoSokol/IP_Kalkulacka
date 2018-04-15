@@ -2,6 +2,7 @@ package Controllers;
 import Exceptions.*;
 import Objekty.Pmw;
 import Objekty.Siet;
+import Vypocitavanie.KontrolaPM;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -285,12 +286,237 @@ public class IPInfoController implements Initializable
         //ak nebude zadana adresa
         if(adresaTF.getText().equals(""))
         {
-            chybaL.setText("Nebola zadaná IP adresa. Zadajte IP adresu.");
+            chybaL.setText("Nebola zadaná IP adresa! Zadajte IP adresu");
+        }
+        else if(maskaTF.getText().equals("") == false && prefixTF.getText().equals("") == false)
+        {
+            KontrolaPM kontrola = new KontrolaPM(maskaTF.getText(),Integer.parseInt(prefixTF.getText()));
+            if(kontrola.zistiRovnake())
+            {
+                try
+                {
+                    Siet siet = new Siet(adresaTF.getText(), Integer.parseInt(prefixTF.getText()));
+                    typ.setText(siet.getTypZadanejAdresy());
+                    sie.setText(siet.getSietovaAdresa());
+                    sieB.setText(siet.getBinarySieBcPMWAdress(0));
+                    bc.setText(siet.getBroadcastovaAdresa());
+                    bcB.setText(siet.getBinarySieBcPMWAdress(1));
+                    maska.setText(siet.getMaska());
+                    maskaB.setText(siet.getBinarySieBcPMWAdress(2));
+                    prefix.setText(siet.getPrefix());
+                    wildcard.setText(siet.getWildcard());
+                    wildcardB.setText(siet.getBinarySieBcPMWAdress(3));
+                    trieda.setText(siet.getTrieda());
+                    poradie.setText(siet.getPoradie());
+                    rozsah.setText(siet.getRozsah());
+                    pocet.setText(siet.getPocetAdries());
+                    pocetP.setText(siet.getPocetPouzitelnychAdries());
+                    chybaL.setText("");
+                }
+                catch (zlyOctetException e)
+                {
+                    System.out.println("octet");
+
+                    chybaL.setText("IP adresa neexistuje! Oktet IP adresy môže byť <0;255>");
+                    typ.setText("");
+                    sie.setText("");
+                    sieB.setText("");
+                    bc.setText("");
+                    bcB.setText("");
+                    maska.setText("");
+                    maskaB.setText("");
+                    prefix.setText("");
+                    wildcard.setText("");
+                    wildcardB.setText("");
+                    trieda.setText("");
+                    poradie.setText("");
+                    rozsah.setText("");
+                    pocet.setText("");
+                    pocetP.setText("");
+                }
+                catch (zlaDlzkaAMWException e)
+                {
+                    System.out.println("dlzka");
+                    chybaL.setText("IP adresa neexistuje! IP adresa obsahuje 4 oktety.");
+                    typ.setText("");
+                    sie.setText("");
+                    sieB.setText("");
+                    bc.setText("");
+                    bcB.setText("");
+                    maska.setText("");
+                    maskaB.setText("");
+                    prefix.setText("");
+                    wildcard.setText("");
+                    wildcardB.setText("");
+                    trieda.setText("");
+                    poradie.setText("");
+                    rozsah.setText("");
+                    pocet.setText("");
+                    pocetP.setText("");
+                }
+                catch (PismenoVOkteteAdresaException e)
+                {
+                    System.out.println("Zle zadaný vstupný údaj. Oktet IP adresy môže obsahovať iba čísla.");
+                    chybaL.setText("IP adresa neexistuje! Oktet IP adresy môže obsahovať iba čísla.");
+                    typ.setText("");
+                    sie.setText("");
+                    sieB.setText("");
+                    bc.setText("");
+                    bcB.setText("");
+                    maska.setText("");
+                    maskaB.setText("");
+                    prefix.setText("");
+                    wildcard.setText("");
+                    wildcardB.setText("");
+                    trieda.setText("");
+                    poradie.setText("");
+                    rozsah.setText("");
+                    pocet.setText("");
+                    pocetP.setText("");
+                }
+                catch (Exception e)
+                {
+
+                }
+            }
+            else
+                chybaL.setText("Prefix a maska sa nezhoduje!");
+
+            try
+            {
+                Siet siet = new Siet(adresaTF.getText(), maskaTF.getText());
+            }
+            catch (zlyOctetException e)
+            {
+                System.out.println("octet");
+
+                chybaL.setText("IP adresa neexistuje! Oktet IP adresy može byť <0;255>");
+                typ.setText("");
+                sie.setText("");
+                sieB.setText("");
+                bc.setText("");
+                bcB.setText("");
+                maska.setText("");
+                maskaB.setText("");
+                prefix.setText("");
+                wildcard.setText("");
+                wildcardB.setText("");
+                trieda.setText("");
+                poradie.setText("");
+                rozsah.setText("");
+                pocet.setText("");
+                pocetP.setText("");
+            }
+            catch (zlaDlzkaAMWException e)
+            {
+                System.out.println("dlzka");
+                chybaL.setText("IP adresa neexistuje! IP adresa obsahuje 4 oktety.");
+                typ.setText("");
+                sie.setText("");
+                sieB.setText("");
+                bc.setText("");
+                bcB.setText("");
+                maska.setText("");
+                maskaB.setText("");
+                prefix.setText("");
+                wildcard.setText("");
+                wildcardB.setText("");
+                trieda.setText("");
+                poradie.setText("");
+                rozsah.setText("");
+                pocet.setText("");
+                pocetP.setText("");
+            }
+            catch (zlaDlzkaMasky e)
+            {
+                System.out.println("dlzka masky");
+                chybaL.setText("Maska neexistuje! Maska obsahuje 4 oktety.");
+                typ.setText("");
+                sie.setText("");
+                sieB.setText("");
+                bc.setText("");
+                bcB.setText("");
+                maska.setText("");
+                maskaB.setText("");
+                prefix.setText("");
+                wildcard.setText("");
+                wildcardB.setText("");
+                trieda.setText("");
+                poradie.setText("");
+                rozsah.setText("");
+                pocet.setText("");
+                pocetP.setText("");
+            }
+            catch (zlaMaskaException e)
+            {
+                System.out.println("Zle zadaná maska.");
+                chybaL.setText("Maska neexistuje!");
+                typ.setText("");
+                sie.setText("");
+                sieB.setText("");
+                bc.setText("");
+                bcB.setText("");
+                maska.setText("");
+                maskaB.setText("");
+                prefix.setText("");
+                wildcard.setText("");
+                wildcardB.setText("");
+                trieda.setText("");
+                poradie.setText("");
+                rozsah.setText("");
+                pocet.setText("");
+                pocetP.setText("");
+            }
+            catch (PismenoVOkteteAdresaException e)
+            {
+                System.out.println("Zle zadaný vstupný údaj. Oktet IP adresy môže obsahovať iba čísla.");
+                chybaL.setText("IP adresa neexistuje! Oktet IP adresy môže obsahovať iba čísla.");
+                typ.setText("");
+                sie.setText("");
+                sieB.setText("");
+                bc.setText("");
+                bcB.setText("");
+                maska.setText("");
+                maskaB.setText("");
+                prefix.setText("");
+                wildcard.setText("");
+                wildcardB.setText("");
+                trieda.setText("");
+                poradie.setText("");
+                rozsah.setText("");
+                pocet.setText("");
+                pocetP.setText("");
+            }
+            catch (PismenoVOkteteMaskaException e)
+            {
+                System.out.println("Zle zadaný vstupný údaj. Oktet masky môže obsahovať iba čísla.");
+                chybaL.setText("Maska neexistuje! Oktet masky môže obsahovať iba čísla.");
+                typ.setText("");
+                sie.setText("");
+                sieB.setText("");
+                bc.setText("");
+                bcB.setText("");
+                maska.setText("");
+                maskaB.setText("");
+                prefix.setText("");
+                wildcard.setText("");
+                wildcardB.setText("");
+                trieda.setText("");
+                poradie.setText("");
+                rozsah.setText("");
+                pocet.setText("");
+                pocetP.setText("");
+            }
+            catch (Exception e)
+            {
+
+            }
+
         }
         //ak nebude zadana maska
         else if(maskaTF.getText().equals("") == true && prefixTF.getText().equals("") == true)
         {
-            chybaL.setText("Nebola zadaná maska siete. Zadajte masku siete.");
+            chybaL.setText("Nebol zadaný prefix alebo maska!");
         }
         //ak bude zadany prefix a maska nie tak vypocita parametre podla prefixu
         else if(maskaTF.getText().equals("") == true && prefixTF.getText().equals("") == false)
@@ -319,7 +545,7 @@ public class IPInfoController implements Initializable
             {
                 System.out.println("octet");
 
-                chybaL.setText("Zle zadaný vstupný udaj. Oktet v IP adrese može byť <0;255>");
+                chybaL.setText("IP adresa neexistuje! Oktet IP adresy može byť <0;255>");
                 typ.setText("");
                 sie.setText("");
                 sieB.setText("");
@@ -339,7 +565,27 @@ public class IPInfoController implements Initializable
             catch (zlaDlzkaAMWException e)
             {
                 System.out.println("dlzka");
-                chybaL.setText("Zle zadaný vstupný údaj. IP adresa obsahuje 4 oktety.");
+                chybaL.setText("IP adresa neexistuje! IP adresa obsahuje 4 oktety.");
+                typ.setText("");
+                sie.setText("");
+                sieB.setText("");
+                bc.setText("");
+                bcB.setText("");
+                maska.setText("");
+                maskaB.setText("");
+                prefix.setText("");
+                wildcard.setText("");
+                wildcardB.setText("");
+                trieda.setText("");
+                poradie.setText("");
+                rozsah.setText("");
+                pocet.setText("");
+                pocetP.setText("");
+            }
+            catch (PismenoVOkteteAdresaException e)
+            {
+                System.out.println("Zle zadaný vstupný údaj. Oktet IP adresy môže obsahovať iba čísla.");
+                chybaL.setText("IP adresa neexistuje! Oktet IP adresy môže obsahovať iba čísla.");
                 typ.setText("");
                 sie.setText("");
                 sieB.setText("");
@@ -358,23 +604,7 @@ public class IPInfoController implements Initializable
             }
             catch (Exception e)
             {
-                System.out.println("Zle zadaný vstupný údaj. Oktet IP adresy môže obsahovať iba čísla.");
-                chybaL.setText("Zle zadaný vstupný údaj. Oktet IP adresy môže obsahovať iba čísla.");
-                typ.setText("");
-                sie.setText("");
-                sieB.setText("");
-                bc.setText("");
-                bcB.setText("");
-                maska.setText("");
-                maskaB.setText("");
-                prefix.setText("");
-                wildcard.setText("");
-                wildcardB.setText("");
-                trieda.setText("");
-                poradie.setText("");
-                rozsah.setText("");
-                pocet.setText("");
-                pocetP.setText("");
+
             }
         }
         //ak nebude zadany prefix a maska bude vypocita parametre podla masky
@@ -404,7 +634,7 @@ public class IPInfoController implements Initializable
             {
                 System.out.println("octet");
 
-                chybaL.setText("Zle zadaný vstupný udaj. Oktet v IP adrese može byť <0;255>");
+                chybaL.setText("IP adresa neexistuje! Oktet v IP adrese može byť <0;255>");
                 typ.setText("");
                 sie.setText("");
                 sieB.setText("");
@@ -424,7 +654,7 @@ public class IPInfoController implements Initializable
             catch (zlaDlzkaAMWException e)
             {
                 System.out.println("dlzka");
-                chybaL.setText("Zle zadaný vstupný údaj. IP adresa obsahuje 4 oktety.");
+                chybaL.setText("IP adresa neexistuje! IP adresa obsahuje 4 oktety.");
                 typ.setText("");
                 sie.setText("");
                 sieB.setText("");
@@ -444,7 +674,7 @@ public class IPInfoController implements Initializable
             catch (zlaDlzkaMasky e)
             {
                 System.out.println("dlzka masky");
-                chybaL.setText("Zle zadaný vstupný údaj. Maska obsahuje 4 oktety.");
+                chybaL.setText("Maska neexistuje! Maska obsahuje 4 oktety.");
                 typ.setText("");
                 sie.setText("");
                 sieB.setText("");
@@ -464,7 +694,47 @@ public class IPInfoController implements Initializable
             catch (zlaMaskaException e)
             {
                 System.out.println("Zle zadaná maska.");
-                chybaL.setText("Zle zadaná maska.");
+                chybaL.setText("Maska neexistuje!");
+                typ.setText("");
+                sie.setText("");
+                sieB.setText("");
+                bc.setText("");
+                bcB.setText("");
+                maska.setText("");
+                maskaB.setText("");
+                prefix.setText("");
+                wildcard.setText("");
+                wildcardB.setText("");
+                trieda.setText("");
+                poradie.setText("");
+                rozsah.setText("");
+                pocet.setText("");
+                pocetP.setText("");
+            }
+            catch (PismenoVOkteteAdresaException e)
+            {
+                System.out.println("Zle zadaný vstupný údaj. Oktet IP adresy môže obsahovať iba čísla.");
+                chybaL.setText("IP adresa neexistuje! Oktet IP adresy môže obsahovať iba čísla.");
+                typ.setText("");
+                sie.setText("");
+                sieB.setText("");
+                bc.setText("");
+                bcB.setText("");
+                maska.setText("");
+                maskaB.setText("");
+                prefix.setText("");
+                wildcard.setText("");
+                wildcardB.setText("");
+                trieda.setText("");
+                poradie.setText("");
+                rozsah.setText("");
+                pocet.setText("");
+                pocetP.setText("");
+            }
+            catch (PismenoVOkteteMaskaException e)
+            {
+                System.out.println("Zle zadaný vstupný údaj. Oktet masky môže obsahovať iba čísla.");
+                chybaL.setText("Maska neexistuje! Oktet masky môže obsahovať iba čísla.");
                 typ.setText("");
                 sie.setText("");
                 sieB.setText("");
@@ -483,23 +753,7 @@ public class IPInfoController implements Initializable
             }
             catch (Exception e)
             {
-                System.out.println("Zle zadaný vstupný údaj. Oktet IP adresy môže obsahovať iba čísla.");
-                chybaL.setText("Zle zadaný vstupný údaj. Oktet IP adresy môže obsahovať iba čísla.");
-                typ.setText("");
-                sie.setText("");
-                sieB.setText("");
-                bc.setText("");
-                bcB.setText("");
-                maska.setText("");
-                maskaB.setText("");
-                prefix.setText("");
-                wildcard.setText("");
-                wildcardB.setText("");
-                trieda.setText("");
-                poradie.setText("");
-                rozsah.setText("");
-                pocet.setText("");
-                pocetP.setText("");
+
             }
         }
 
@@ -524,7 +778,7 @@ public class IPInfoController implements Initializable
                 //ak bude prefix vecsi ako 32 vyhodi chybu
                 else if (Integer.parseInt(prefixTF.getText()) > 32)
                 {
-                    chybaL.setText("Zle zadaný vstupný údaj. Prefix môže byť <0;32>");
+                    chybaL.setText("Zle zadaný vstupný údaj! Prefix môže byť <0;32>");
                     maskaTF.setText("");
                 }
                 //ak bude vsetko v poriadku vypocita masku

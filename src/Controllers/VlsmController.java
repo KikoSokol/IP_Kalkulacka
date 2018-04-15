@@ -230,7 +230,7 @@ public class VlsmController implements Initializable
     void pridajSiet(ActionEvent event)
     {
         if(pocetZariadeni.getText().equals(""))
-            chybaL.setText("Nebol zadaný počet zariadení.");
+            chybaL.setText("Nebol zadaný počet zariadení!");
         else
         {
             boolean rovnakyNazovSiete = false;
@@ -261,9 +261,9 @@ public class VlsmController implements Initializable
     void enterAction(ActionEvent event)
     {
         if(adresaTF.getText().equals(""))
-            chybaL.setText("Nebola zadaná sieťová adresa");
+            chybaL.setText("Nebola zadaná sieťová adresa!");
         if(prefixTF.getText().equals(""))
-            chybaL.setText("Nebol zadaný prefix");
+            chybaL.setText("Nebol zadaný prefix!");
 
 
         //finalne dvojrozmerne pole kde sa ulozia finalne pocty a nazvy
@@ -286,31 +286,31 @@ public class VlsmController implements Initializable
 
             } catch (zlyPrefixException e)
             {
-                chybaL.setText("Prefix neexistuje. Prefix môže byť <0;32>");
+                chybaL.setText("Prefix neexistuje! Prefix môže byť <0;32>");
             }
             catch (zlyOctetException e)
             {
-                chybaL.setText("Zle zadaný vstupný udaj. Oktet v IP adrese može byť <0;255>");
+                chybaL.setText("IP adresa neexistuje! Oktet IP adresy može byť <0;255>");
             }
             catch (zlaDlzkaAMWException e)
             {
-                chybaL.setText("Zle zadaný vstupný údaj. IP adresa obsahuje 4 oktety");
+                chybaL.setText("IP adresa neexistuje! IP adresa obsahuje 4 oktety");
             }
             catch (MalaSietExcepiton e)
             {
-                chybaL.setText("Sieť sa nedá rozdeliť");
+                chybaL.setText("Sieť sa nedá rozdeliť!");
             }
             catch (nieSietovaAdresaException e)
             {
-                chybaL.setText("Zla IP adresa. Zadaj sieťovú adresu!");
+                chybaL.setText("Zla IP adresa! Zadaj sieťovú adresu!");
             }
             catch (IOException e)
             {
-                chybaL.setText("Zle zadaný vstupný údaj. Oktet IP adresy alebo môže obsahovať iba čísla.");
+                chybaL.setText("IP adresa neexistuje. Oktet IP adresy môže obsahovať iba čísla.");
             }
             catch(Exception e)
             {
-                chybaL.setText("Nebola zadana sieťová adresa");
+                chybaL.setText("Nebola zadaná sieťová adresa");
             }
         }
         else

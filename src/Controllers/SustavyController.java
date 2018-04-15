@@ -226,14 +226,14 @@ public class SustavyController implements Initializable
                         catch (NumberFormatException e)
                         {
                             System.out.println("aaa");
-                            chybaL.setText("Príliš veľké číslo.");
+                            chybaL.setText("Príliš veľké číslo!");
                             binarna.setText("");
                             osmickova.setText("");
                             sestnastkova.setText("");
                         }
                         catch (ArithmeticException e)
                         {
-                            chybaL.setText("Príliš veľké číslo.");
+                            chybaL.setText("Príliš veľké číslo!");
                             binarna.setText("");
                             osmickova.setText("");
                             sestnastkova.setText("");
@@ -271,7 +271,7 @@ public class SustavyController implements Initializable
                     }
                     catch (ArithmeticException e)
                     {
-                        chybaL.setText("Príliš veľké číslo.");
+                        chybaL.setText("Príliš veľké číslo!");
                         binarna.setText("");
                         osmickova.setText("");
                         sestnastkova.setText("");
@@ -309,7 +309,7 @@ public class SustavyController implements Initializable
                     }
                     catch (ArithmeticException e)
                     {
-                        chybaL.setText("Príliš veľké číslo.");
+                        chybaL.setText("Príliš veľké číslo!");
                         binarna.setText("");
                         osmickova.setText("");
                         sestnastkova.setText("");
@@ -352,7 +352,7 @@ public class SustavyController implements Initializable
                     }
                     catch (ArithmeticException e)
                     {
-                        chybaL.setText("Príliš veľké číslo.");
+                        chybaL.setText("Príliš veľké číslo!");
                         binarna.setText("");
                         osmickova.setText("");
                         sestnastkova.setText("");

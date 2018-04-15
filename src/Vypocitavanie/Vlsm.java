@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class Vlsm
 {
-    public static ObservableList<Siet> vlsm(String siet, int prefix, String[][] siete) throws zlyPrefixException, IOException, zlyOctetException, zlaDlzkaAMWException, MalaSietExcepiton, nieSietovaAdresaException {
+    public static ObservableList<Siet> vlsm(String siet, int prefix, String[][] siete) throws zlyPrefixException, IOException, zlyOctetException, zlaDlzkaAMWException, MalaSietExcepiton, nieSietovaAdresaException, PismenoVOkteteAdresaException {
 
         Prevody prevody = new Prevody();
         //rozdelene siete

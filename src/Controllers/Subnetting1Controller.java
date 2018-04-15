@@ -243,13 +243,13 @@ public class Subnetting1Controller implements Initializable
     {
         //ak nebola zadana adresa
         if(adresaTF.getText().equals(""))
-            chybaL.setText("Nebola zadaná sieťová adresa. Zadaj sieťovú adresu.");
+            chybaL.setText("Nebola zadaná sieťová adresa! Zadaj sieťovú adresu.");
         // ak nebol zadany prefix
         else if(prefixTF.getText().equals(""))
-            chybaL.setText("Nebo. zadaný prefix. Zadaj prefix siete.");
+            chybaL.setText("Nebol zadaný prefix! Zadaj prefix siete.");
         //ak nebol zadany pocet potrebnych sieti
         else if(pocetTF.getText().equals(""))
-            chybaL.setText("Nebol zadaný počet potrebných sieti");
+            chybaL.setText("Nebol zadaný počet potrebných sieti!");
         //ak vsetko je zadane spravne vypocita udaje
         else
         {
@@ -264,22 +264,22 @@ public class Subnetting1Controller implements Initializable
             catch (zlaDlzkaAMWException e)
             {
                 System.out.println("Zla dlzka adresy");
-                chybaL.setText("Zle zadaný vstupný údaj. IP adresa obsahuje 4 oktety.");
+                chybaL.setText("IP adresa neexistuje! IP adresa obsahuje 4 oktety.");
             }
             catch (zlyOctetException e)
             {
                 System.out.println("Zly oktet");
-                chybaL.setText("Zle zadaný vstupný udaj. Oktet v IP adrese može byť <0;255>");
+                chybaL.setText("IP adresa neexistuje. Oktet IP adresy može byť <0;255>");
 
             }
             catch (zlyPrefixException e)
             {
                 System.out.println("Zly prefix");
-                chybaL.setText("Prefix neexistuje. Prefix môže byť <0;32>");
+                chybaL.setText("Prefix neexistuje! Prefix môže byť <0;32>");
             }
             catch (subnetingException e)
             {
-                chybaL.setText("Táto sieť sa nedá rozdeliť na toľko podsietí.");
+                chybaL.setText("Táto sieť sa nedá rozdeliť na toľko podsietí!");
             }
             catch (nullSubnetingException e)
             {
@@ -290,11 +290,11 @@ public class Subnetting1Controller implements Initializable
             }
             catch (nieSietovaAdresaException e)
             {
-                chybaL.setText("Zla IP adresa. Zadaj sieťovú adresu!");
+                chybaL.setText("Zla IP adresa! Zadaj sieťovú adresu!");
             }
             catch (Exception e)
             {
-                chybaL.setText("Zle zadaný vstupný údaj. Oktet IP adresy môže obsahovať iba čísla.");
+                chybaL.setText("IP adresa neexistuje! Oktet IP adresy môže obsahovať iba čísla.");
                 System.out.println("Zly vstup");
             }
         }

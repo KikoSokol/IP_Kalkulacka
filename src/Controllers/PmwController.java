@@ -208,7 +208,7 @@ public class PmwController implements Initializable
     {
         chybaL.setText("");
         if(prefix.getText().equals(""))
-            chybaL.setText("Nebol zadaný údaj.");
+            chybaL.setText("Nebol zadaný údaj!");
         else
         {
             try
@@ -221,7 +221,7 @@ public class PmwController implements Initializable
             catch (zlyPrefixException e)
             {
                 System.out.println("zly prefix");
-                chybaL.setText("Prefix neexistuje. Prefix môže byť <0;32>");
+                chybaL.setText("Prefix neexistuje! Prefix môže byť <0;32>");
                 maska.setText("");
                 wildcard.setText("");
             }
@@ -236,7 +236,7 @@ public class PmwController implements Initializable
     {
         chybaL.setText("");
         if(maska.getText().equals(""))
-            chybaL.setText("Nebol zadaný údaj.");
+            chybaL.setText("Nebol zadaný údaj!");
         else
         {
             try
@@ -249,21 +249,21 @@ public class PmwController implements Initializable
             catch (zlaMaskaException e)
             {
                 System.out.println("Maska neexistuje");
-                chybaL.setText("Zle zadaná maska. Taká maska neexistuje.");
+                chybaL.setText("Maska Neexistuje!");
                 prefix.setText("");
                 wildcard.setText("");
             }
             catch (zlaDlzkaAMWException e)
             {
                 System.out.println("zla dlzka masky");
-                chybaL.setText("Zle zadaná maska. Maska má 4 oktety.");
+                chybaL.setText("Maska neexistuje. Maska obsahuje 4 oktety.");
                 prefix.setText("");
                 wildcard.setText("");
             }
             catch (Exception e)
             {
                 System.out.println("pismena");
-                chybaL.setText("Zle zadaná maska. Oktet masky môže obsahovať iba čísla.");
+                chybaL.setText("Maska neexistuje! Oktet masky môže obsahovať iba čísla.");
                 prefix.setText("");
                 wildcard.setText("");
             }
@@ -277,7 +277,7 @@ public class PmwController implements Initializable
     {
         chybaL.setText("");
         if(wildcard.getText().equals(""))
-            chybaL.setText("Nebol zadaný údaj.");
+            chybaL.setText("Nebol zadaný údaj!");
         else
         {
             try
@@ -291,21 +291,21 @@ public class PmwController implements Initializable
             catch (zlyWildcardException e)
             {
                 System.out.println("Wildcard neexistuje");
-                chybaL.setText("Zle zadaný wildcard. Taký wildcard neexistuje.");
+                chybaL.setText("Wildcard neexistuje!");
                 prefix.setText("");
                 maska.setText("");
             }
             catch (zlaDlzkaAMWException e)
             {
                 System.out.println("zla dlzka wildcardu");
-                chybaL.setText("Zle zadaný wildcard. Wildcard má 4 oktety.");
+                chybaL.setText("Wildcard neexistuje! Wildcard obsahuje 4 oktety.");
                 prefix.setText("");
                 maska.setText("");
             }
             catch (Exception e)
             {
                 System.out.println("pismena");
-                chybaL.setText("Zle zadaný wildcard. Oktet wildcardu môže obsahovať iba čísla.");
+                chybaL.setText("Wildcard neexistuje! Oktet wildcardu môže obsahovať iba čísla.");
                 prefix.setText("");
                 maska.setText("");
             }
@@ -343,7 +343,7 @@ public class PmwController implements Initializable
                     catch (zlyPrefixException e)
                     {
                         System.out.println("zly prefix");
-                        chybaL.setText("Prefix neexistuje. Prefix môže byť <0;32>");
+                        chybaL.setText("Prefix neexistuje! Prefix môže byť <0;32>");
                         maska.setText("");
                         wildcard.setText("");
                     }
