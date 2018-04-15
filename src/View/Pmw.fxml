@@ -76,7 +76,7 @@
                               <Font name="System Bold" size="25.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="prefix" minHeight="40.0" prefHeight="40.0" promptText="24">
+                        <TextField fx:id="prefix" alignment="CENTER" minHeight="40.0" prefHeight="40.0" promptText="24">
                            <font>
                               <Font size="25.0" />
                            </font>
@@ -94,7 +94,7 @@
                               <Font name="System Bold" size="25.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="maska" minHeight="40.0" prefHeight="40.0" promptText="255.255.255.0">
+                        <TextField fx:id="maska" alignment="CENTER" minHeight="40.0" prefHeight="40.0" promptText="255.255.255.0">
                            <font>
                               <Font size="25.0" />
                            </font>
@@ -112,7 +112,7 @@
                               <Font name="System Bold" size="25.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="wildcard" minHeight="40.0" prefHeight="40.0" promptText="0.0.0.255">
+                        <TextField fx:id="wildcard" alignment="CENTER" minHeight="40.0" prefHeight="40.0" promptText="0.0.0.255">
                            <font>
                               <Font size="25.0" />
                            </font>
