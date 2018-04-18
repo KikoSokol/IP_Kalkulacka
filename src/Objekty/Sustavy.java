@@ -131,6 +131,13 @@ public class Sustavy
                         s[i] = 15;
             }
 
+            //ak bude sestnastkova prilis velke cislo - v desiatkovej vecsie ako long
+            if ((start == 16 && s.length > 15) || (start == 8 && s.length > 15) || (start == 2 &&  s.length > 60))
+            {
+                neexistujucaSustavaException e = new neexistujucaSustavaException();
+                throw e;
+            }
+
 
 
         this.desiatkova = prevody.fromOtherToDecLong(s, start);

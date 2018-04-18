@@ -78,13 +78,13 @@ public class Prevody
     */
     public static int[] fromDecToOtherLong(long dec,int endnumerals)
     {
-        int bits = bitsLong(dec,(long) endnumerals);       //premenná ktorá uklada počet bitov danej spústavy
+        int bits = bitsLong(dec,(long) endnumerals);       //premenná ktorá uklada počet bitov danej sústavy
         int[] finall = new int[bits];           // pole do ktorého sa ukladá sústava
         long rest = dec;
         for(int index = bits - 1;index >= 0;index--)	// delenia číslom endnumerals
         {
             finall[index] =(int) (rest %endnumerals);
-            rest = rest / endnumerals;
+            rest = (rest / (long)endnumerals);
         }
         return finall;
     }

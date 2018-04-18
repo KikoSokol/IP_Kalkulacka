@@ -184,6 +184,7 @@ public class SustavyController implements Initializable
     void vymazAction(ActionEvent event)
     {
         desiatkova.setText("");
+        desiatkova.clear();
         binarna.setText("");
         osmickova.setText("");
         sestnastkova.setText("");
@@ -195,6 +196,7 @@ public class SustavyController implements Initializable
     public void initialize(URL location, ResourceBundle resources)
     {
         //nastavenie prepocitavania, obmedzeni na textfieldy
+        desiatkova.setOnMouseClicked(event -> prevod = 0);
         desiatkova.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue,
@@ -205,9 +207,27 @@ public class SustavyController implements Initializable
 
                 if(desiatkova.getText().equals(""))
                 {
-                    binarna.setText("");
-                    osmickova.setText("");
-                    sestnastkova.setText("");
+                    if (prevod == 0)
+                    {
+                        binarna.clear();
+                        osmickova.clear();
+                        sestnastkova.clear();
+                    }
+                    if(prevod == 1)
+                    {
+                        osmickova.clear();
+                        sestnastkova.clear();
+                    }
+                    if(prevod == 2)
+                    {
+                        binarna.clear();
+                        sestnastkova.clear();
+                    }
+                    if(prevod == 3)
+                    {
+                        binarna.clear();
+                        osmickova.clear();
+                    }
                 }
                 else
                 {
@@ -225,18 +245,20 @@ public class SustavyController implements Initializable
                         }
                         catch (NumberFormatException e)
                         {
-                            System.out.println("aaa");
+                            System.out.println("NumberFormatException");
                             chybaL.setText("Príliš veľké číslo!");
                             binarna.setText("");
                             osmickova.setText("");
                             sestnastkova.setText("");
+
                         }
                         catch (ArithmeticException e)
                         {
+                            System.out.println("aritmetik");
                             chybaL.setText("Príliš veľké číslo!");
-                            binarna.setText("");
-                            osmickova.setText("");
-                            sestnastkova.setText("");
+                            binarna.clear();
+                            osmickova.clear();
+                            sestnastkova.clear();
                         }
                     }
                 }
@@ -253,30 +275,56 @@ public class SustavyController implements Initializable
                 if (!newValue.equals("0") || !newValue.equals("1")) {
                     binarna.setText(newValue.replaceAll("[^\\\\0\\\\1]", ""));
                 }
-
-                if (prevod == 1)
+                if(binarna.getText().equals(""))
                 {
-                    Sustavy sustavy = null;
-                    try {
-                        sustavy = new Sustavy(binarna.getText(), 2);
-                        desiatkova.setText(sustavy.getDesiatkova());
-                        osmickova.setText(sustavy.getOsmickova());
-                        sestnastkova.setText(sustavy.getSestnastkova());
-                        System.out.println("a");
-                        chybaL.setText("");
-                    }
-                    catch (neexistujucaSustavaException e)
+                    if(prevod == 0)
                     {
-                        System.out.println("binarna");
+                        osmickova.clear();
+                        sestnastkova.clear();
                     }
-                    catch (ArithmeticException e)
+                    if(prevod == 1)
                     {
-                        chybaL.setText("Príliš veľké číslo!");
-                        binarna.setText("");
-                        osmickova.setText("");
-                        sestnastkova.setText("");
+                        desiatkova.clear();
+                        osmickova.clear();
+                        sestnastkova.clear();
+                    }
+                    if(prevod == 2)
+                    {
+                        desiatkova.clear();
+                        sestnastkova.clear();
+                    }
+                    if(prevod == 3)
+                    {
+                        desiatkova.clear();
+                        osmickova.clear();
                     }
                 }
+                else
+                {
+                    if (prevod == 1)
+                    {
+                        Sustavy sustavy = null;
+                        try {
+                            sustavy = new Sustavy(binarna.getText(), 2);
+                            desiatkova.setText(sustavy.getDesiatkova());
+                            osmickova.setText(sustavy.getOsmickova());
+                            sestnastkova.setText(sustavy.getSestnastkova());
+                            System.out.println("a");
+                            chybaL.setText("");
+                        }
+                        catch (neexistujucaSustavaException e)
+                        {
+                            System.out.println("binarna");
+                            chybaL.setText("Príliš veľké číslo!");
+                            desiatkova.clear();
+                            osmickova.clear();
+                            sestnastkova.clear();
+                        }
+
+                    }
+                }
+
+
             }
         });
 
@@ -291,30 +339,66 @@ public class SustavyController implements Initializable
                     osmickova.setText(newValue.replaceAll("[^\\\\0\\\\1\\\\2\\\\3\\\\4\\\\5\\\\6\\\\7]", ""));
                 }
 
-                if (prevod == 2)
+                if(osmickova.getText().equals(""))
                 {
-                    Sustavy sustavy = null;
-                    try
+                    if(prevod == 0)
                     {
-                        sustavy = new Sustavy(osmickova.getText(), 8);
-                        desiatkova.setText(sustavy.getDesiatkova());
-                        binarna.setText(sustavy.getBinarna());
-                        sestnastkova.setText(sustavy.getSestnastkova());
-                        System.out.println("a");
-                        chybaL.setText("");
+                        binarna.clear();
+                        sestnastkova.clear();
                     }
-                    catch (neexistujucaSustavaException e)
+                    if(prevod == 1)
                     {
-                        System.out.println("osem");
+                        desiatkova.clear();
+                        sestnastkova.clear();
                     }
-                    catch (ArithmeticException e)
+                    if(prevod == 2)
                     {
-                        chybaL.setText("Príliš veľké číslo!");
-                        binarna.setText("");
-                        osmickova.setText("");
-                        sestnastkova.setText("");
+                        desiatkova.clear();
+                        binarna.clear();
+                        sestnastkova.clear();
+                    }
+                    if(prevod == 3)
+                    {
+                        binarna.clear();
+                        desiatkova.clear();
+                    }
+
+                }
+                else
+                {
+                    if (prevod == 2)
+                    {
+                        Sustavy sustavy = null;
+                        try
+                        {
+                            sustavy = new Sustavy(osmickova.getText(), 8);
+                            desiatkova.setText(sustavy.getDesiatkova());
+                            binarna.setText(sustavy.getBinarna());
+                            sestnastkova.setText(sustavy.getSestnastkova());
+                            System.out.println("a");
+                            chybaL.setText("");
+                        }
+                        catch (neexistujucaSustavaException e)
+                        {
+                            System.out.println("osem");
+                            chybaL.setText("Príliš veľké číslo!");
+                            desiatkova.clear();
+                            binarna.clear();
+                            sestnastkova.clear();
+                        }
+                        catch (ArithmeticException e)
+                        {
+                            System.out.println("aritmetik");
+                            chybaL.setText("Príliš veľké číslo!");
+                            binarna.clear();
+                            desiatkova.clear();
+                            sestnastkova.clear();
+                        }
+
                     }
                 }
+
+
             }
         });
 
@@ -334,31 +418,67 @@ public class SustavyController implements Initializable
                     sestnastkova.setText(newValue.replaceAll("[^\\\\0\\\\1\\\\2\\\\3\\\\4\\\\5\\\\6\\\\7\\\\8\\\\9\\\\A\\\\a\\\\B\\\\b\\\\C\\\\c\\\\D\\\\d\\\\E\\\\e\\\\F\\\\f]", ""));
                 }
 
-                if (prevod == 3)
+                if(sestnastkova.getText().equals(""))
                 {
-                    Sustavy sustavy = null;
-                    try
+                    if(prevod == 0)
                     {
-                        sustavy = new Sustavy(sestnastkova.getText(), 16);
-                        desiatkova.setText(sustavy.getDesiatkova());
-                        binarna.setText(sustavy.getBinarna());
-                        osmickova.setText(sustavy.getOsmickova());
-                        System.out.println("a");
-                        chybaL.setText("");
+                        binarna.clear();
+                        osmickova.clear();
                     }
-                    catch (neexistujucaSustavaException e)
+                    if(prevod == 1)
                     {
-                        System.out.println("sestnast");
+                        osmickova.clear();
+                        desiatkova.clear();
                     }
-                    catch (ArithmeticException e)
+                    if(prevod == 2)
                     {
-                        chybaL.setText("Príliš veľké číslo!");
-                        binarna.setText("");
-                        osmickova.setText("");
-                        sestnastkova.setText("");
+                        binarna.clear();
+                        desiatkova.clear();
+                    }
+                    if(prevod == 3)
+                    {
+                        desiatkova.clear();
+                        binarna.clear();
+                        osmickova.clear();
+                    }
+
+                }
+                else
+                {
+                    if (prevod == 3)
+                    {
+                        Sustavy sustavy = null;
+                        try
+                        {
+                            sustavy = new Sustavy(sestnastkova.getText(), 16);
+                            desiatkova.setText(sustavy.getDesiatkova());
+                            binarna.setText(sustavy.getBinarna());
+                            osmickova.setText(sustavy.getOsmickova());
+                            System.out.println("a");
+                            chybaL.setText("");
+                        }
+                        catch (neexistujucaSustavaException e)
+                        {
+                            System.out.println("sestnast");
+                            chybaL.setText("Príliš veľké číslo!");
+                            binarna.clear();
+                            desiatkova.clear();
+                            osmickova.clear();
+                        }
+                        catch (ArithmeticException e)
+                        {
+                            chybaL.setText("Príliš veľké číslo!");
+                            System.out.println("aritmetik");
+                            binarna.clear();
+                            osmickova.clear();
+                            desiatkova.clear();
+                        }
                     }
                 }
+
+
             }
         });
     }
+
 }
