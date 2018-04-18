@@ -5,11 +5,13 @@ import Objekty.Siet;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import javax.swing.plaf.metal.MetalLabelUI;
 import java.io.IOException;
+import java.net.Inet4Address;
 
 public class Vlsm
 {
-    public static ObservableList<Siet> vlsm(String siet, int prefix, String[][] siete) throws zlyPrefixException, IOException, zlyOctetException, zlaDlzkaAMWException, MalaSietExcepiton, nieSietovaAdresaException, PismenoVOkteteAdresaException {
+    public static ObservableList<Siet> vlsm(String siet, int prefix, String[][] siete) throws zlyPrefixException, zlyOctetException, zlaDlzkaAMWException, MalaSietExcepiton, nieSietovaAdresaException, PismenoVOkteteAdresaException {
 
         Prevody prevody = new Prevody();
         //rozdelene siete
@@ -36,18 +38,33 @@ public class Vlsm
         int[] prefixi = new int[siete.length];
 
         //celkovy pocet pozadovanych adries
-        int celkovyPocetVsetkychAdries = 0;
+        long celkovyPocetVsetkychAdries = 0;
 
         // pridanie sietovej a broadcastovej adresy a vypocitanie prefixu
         for (int i = 0; i < siete.length; i++)
         {
-            siete[i][0] = "" + (Integer.parseInt(siete[i][0]) + 2);
-            celkovyPocetVsetkychAdries += Integer.parseInt(siete[i][0]);
+            System.out.println("aa " + siete[i][0]);
+            siete[i][0] = "" + (Long.parseLong(siete[i][0]) + 2);
+//            try {
+//                Integer.parseInt(siete[i][0]);
+//                System.out.println("aaa " + siete[i][0]);
+//            }
+//            catch (NumberFormatException e)
+//            {
+//                MalaSietExcepiton malaSietExcepiton = new MalaSietExcepiton();
+//                throw malaSietExcepiton;
+//            }
+            celkovyPocetVsetkychAdries +=  Long.parseLong(siete[i][0]);
             prefixi[i] = 32 - prevody.najblizsiaOdmocnina2(Integer.parseInt(siete[i][0]));
         }
+        for (int u = 0; u < prefixi.length; u++)
+        {
+            System.out.print(prefixi[u] + "    ");
+        }
+
 
         //Ak zadana siet je mala a neda sa rozdelit
-        if(celkovyPocetVsetkychAdries > prevody.exponentiation(2, 32 - prefix))
+        if(celkovyPocetVsetkychAdries >  prevody.exponentiationLong((long)2, (long)(32 - prefix)))
         {
             MalaSietExcepiton malaSietExcepiton = new MalaSietExcepiton();
             throw malaSietExcepiton;

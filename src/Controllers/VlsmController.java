@@ -260,6 +260,10 @@ public class VlsmController implements Initializable
     @FXML
     void enterAction(ActionEvent event)
     {
+        for(int y = 0; y < poctyArray.size(); y++)
+        {
+            System.out.println(poctyArray.get(y));
+        }
         if(adresaTF.getText().equals(""))
             chybaL.setText("Nebola zadaná sieťová adresa!");
         if(prefixTF.getText().equals(""))
@@ -307,6 +311,10 @@ public class VlsmController implements Initializable
             catch (IOException e)
             {
                 chybaL.setText("IP adresa neexistuje. Oktet IP adresy môže obsahovať iba čísla.");
+            }
+            catch (NumberFormatException e)
+            {
+                chybaL.setText("Je požadovaných príliš veľa zariadení v sieti!");
             }
             catch(Exception e)
             {
