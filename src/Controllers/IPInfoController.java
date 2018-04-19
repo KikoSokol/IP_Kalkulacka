@@ -313,7 +313,7 @@ public class IPInfoController implements Initializable
                     pocetP.setText(siet.getPocetPouzitelnychAdries());
                     chybaL.setText("");
                 }
-                catch (zlyOctetException e)
+                catch (ZlyOctetException e)
                 {
                     System.out.println("octet");
 
@@ -334,7 +334,7 @@ public class IPInfoController implements Initializable
                     pocet.setText("");
                     pocetP.setText("");
                 }
-                catch (zlaDlzkaAMWException e)
+                catch (ZlaDlzkaAMWException e)
                 {
                     System.out.println("dlzka");
                     chybaL.setText("IP adresa neexistuje! IP adresa obsahuje 4 oktety.");
@@ -386,7 +386,7 @@ public class IPInfoController implements Initializable
             {
                 Siet siet = new Siet(adresaTF.getText(), maskaTF.getText());
             }
-            catch (zlyOctetException e)
+            catch (ZlyOctetException e)
             {
                 System.out.println("octet");
 
@@ -407,7 +407,7 @@ public class IPInfoController implements Initializable
                 pocet.setText("");
                 pocetP.setText("");
             }
-            catch (zlaDlzkaAMWException e)
+            catch (ZlaDlzkaAMWException e)
             {
                 System.out.println("dlzka");
                 chybaL.setText("IP adresa neexistuje! IP adresa obsahuje 4 oktety.");
@@ -427,7 +427,7 @@ public class IPInfoController implements Initializable
                 pocet.setText("");
                 pocetP.setText("");
             }
-            catch (zlaDlzkaMasky e)
+            catch (ZlaDlzkaMasky e)
             {
                 System.out.println("dlzka masky");
                 chybaL.setText("Maska neexistuje! Maska obsahuje 4 oktety.");
@@ -447,7 +447,7 @@ public class IPInfoController implements Initializable
                 pocet.setText("");
                 pocetP.setText("");
             }
-            catch (zlaMaskaException e)
+            catch (ZlaMaskaException e)
             {
                 System.out.println("Zle zadaná maska.");
                 chybaL.setText("Maska neexistuje!");
@@ -541,7 +541,7 @@ public class IPInfoController implements Initializable
                 pocetP.setText(siet.getPocetPouzitelnychAdries());
                 chybaL.setText("");
             }
-            catch (zlyOctetException e)
+            catch (ZlyOctetException e)
             {
                 System.out.println("octet");
 
@@ -562,7 +562,7 @@ public class IPInfoController implements Initializable
                 pocet.setText("");
                 pocetP.setText("");
             }
-            catch (zlaDlzkaAMWException e)
+            catch (ZlaDlzkaAMWException e)
             {
                 System.out.println("dlzka");
                 chybaL.setText("IP adresa neexistuje! IP adresa obsahuje 4 oktety.");
@@ -630,7 +630,7 @@ public class IPInfoController implements Initializable
                 pocetP.setText(siet.getPocetPouzitelnychAdries());
                 chybaL.setText("");
             }
-            catch (zlyOctetException e)
+            catch (ZlyOctetException e)
             {
                 System.out.println("octet");
 
@@ -651,7 +651,7 @@ public class IPInfoController implements Initializable
                 pocet.setText("");
                 pocetP.setText("");
             }
-            catch (zlaDlzkaAMWException e)
+            catch (ZlaDlzkaAMWException e)
             {
                 System.out.println("dlzka");
                 chybaL.setText("IP adresa neexistuje! IP adresa obsahuje 4 oktety.");
@@ -671,7 +671,7 @@ public class IPInfoController implements Initializable
                 pocet.setText("");
                 pocetP.setText("");
             }
-            catch (zlaDlzkaMasky e)
+            catch (ZlaDlzkaMasky e)
             {
                 System.out.println("dlzka masky");
                 chybaL.setText("Maska neexistuje! Maska obsahuje 4 oktety.");
@@ -691,7 +691,7 @@ public class IPInfoController implements Initializable
                 pocet.setText("");
                 pocetP.setText("");
             }
-            catch (zlaMaskaException e)
+            catch (ZlaMaskaException e)
             {
                 System.out.println("Zle zadaná maska.");
                 chybaL.setText("Maska neexistuje!");
@@ -790,7 +790,7 @@ public class IPInfoController implements Initializable
                         maskaTF.setText(pmw.getMaska());
                         chybaL.setText("");
                     }
-                    catch (zlyPrefixException e)
+                    catch (ZlyPrefixException e)
                     {
                         System.out.println("zly prefix");
                     }

@@ -1,7 +1,6 @@
 package Controllers;
 
 import Exceptions.*;
-import Objekty.Pmw;
 import Objekty.Siet;
 import Okna.VlsmSieteOkno;
 import Vypocitavanie.Vlsm;
@@ -17,7 +16,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -288,15 +286,15 @@ public class VlsmController implements Initializable
                 VlsmSieteOkno vlsmSiete = new VlsmSieteOkno(siete);
                 chybaL.setText("");
 
-            } catch (zlyPrefixException e)
+            } catch (ZlyPrefixException e)
             {
                 chybaL.setText("Prefix neexistuje! Prefix môže byť <0;32>");
             }
-            catch (zlyOctetException e)
+            catch (ZlyOctetException e)
             {
                 chybaL.setText("IP adresa neexistuje! Oktet IP adresy može byť <0;255>");
             }
-            catch (zlaDlzkaAMWException e)
+            catch (ZlaDlzkaAMWException e)
             {
                 chybaL.setText("IP adresa neexistuje! IP adresa obsahuje 4 oktety");
             }
@@ -304,7 +302,7 @@ public class VlsmController implements Initializable
             {
                 chybaL.setText("Sieť sa nedá rozdeliť!");
             }
-            catch (nieSietovaAdresaException e)
+            catch (NieSietovaAdresaException e)
             {
                 chybaL.setText("Zla IP adresa! Zadaj sieťovú adresu!");
             }

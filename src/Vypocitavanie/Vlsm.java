@@ -5,13 +5,9 @@ import Objekty.Siet;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import javax.swing.plaf.metal.MetalLabelUI;
-import java.io.IOException;
-import java.net.Inet4Address;
-
 public class Vlsm
 {
-    public static ObservableList<Siet> vlsm(String siet, int prefix, String[][] siete) throws zlyPrefixException, zlyOctetException, zlaDlzkaAMWException, MalaSietExcepiton, nieSietovaAdresaException, PismenoVOkteteAdresaException {
+    public static ObservableList<Siet> vlsm(String siet, int prefix, String[][] siete) throws ZlyPrefixException, ZlyOctetException, ZlaDlzkaAMWException, MalaSietExcepiton, NieSietovaAdresaException, PismenoVOkteteAdresaException {
 
         Prevody prevody = new Prevody();
         //rozdelene siete
@@ -30,7 +26,7 @@ public class Vlsm
         //ak na vstupe nebude sietova adresa
         if (!kontrola.getSietovaAdresa().equals(siet))
         {
-            nieSietovaAdresaException e = new nieSietovaAdresaException();
+            NieSietovaAdresaException e = new NieSietovaAdresaException();
             throw e;
         }
 

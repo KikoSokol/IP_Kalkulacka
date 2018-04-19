@@ -1,6 +1,6 @@
 package Objekty;
 
-import Exceptions.neexistujucaSustavaException;
+import Exceptions.NeexistujucaSustavaException;
 import Vypocitavanie.Prevody;
 
 public class Sustavy
@@ -21,7 +21,7 @@ public class Sustavy
         this.sestnastkova = prevody.fromDecToOtherLong(dec, 16);
     }
 
-    public Sustavy(String sustava, int start) throws neexistujucaSustavaException
+    public Sustavy(String sustava, int start) throws NeexistujucaSustavaException
     // start: 2-binarna 8-osmickova 16 sestnaskova
     {
         prevody = new Prevody();
@@ -36,17 +36,17 @@ public class Sustavy
                 int q = Integer.parseInt(Character.toString(n));
                 if (q > 1)
                 {
-                    neexistujucaSustavaException e = new neexistujucaSustavaException();
+                    NeexistujucaSustavaException e = new NeexistujucaSustavaException();
                     throw e;
                 }
                 if (q < 0)
                 {
-                    neexistujucaSustavaException e = new neexistujucaSustavaException();
+                    NeexistujucaSustavaException e = new NeexistujucaSustavaException();
                     throw e;
                 }
                 if(n == ' ')
                 {
-                    neexistujucaSustavaException e = new neexistujucaSustavaException();
+                    NeexistujucaSustavaException e = new NeexistujucaSustavaException();
                     throw e;
                 }
             }
@@ -65,12 +65,12 @@ public class Sustavy
                 int q = Integer.parseInt(Character.toString(n));
                 if (q > 7)
                 {
-                    neexistujucaSustavaException e = new neexistujucaSustavaException();
+                    NeexistujucaSustavaException e = new NeexistujucaSustavaException();
                     throw e;
                 }
                 if (q < 0)
                 {
-                    neexistujucaSustavaException e = new neexistujucaSustavaException();
+                    NeexistujucaSustavaException e = new NeexistujucaSustavaException();
                     throw e;
                 }
             }
@@ -134,7 +134,7 @@ public class Sustavy
             //ak bude sestnastkova prilis velke cislo - v desiatkovej vecsie ako long
             if ((start == 16 && s.length > 15) || (start == 8 && s.length > 15) || (start == 2 &&  s.length > 60))
             {
-                neexistujucaSustavaException e = new neexistujucaSustavaException();
+                NeexistujucaSustavaException e = new NeexistujucaSustavaException();
                 throw e;
             }
 

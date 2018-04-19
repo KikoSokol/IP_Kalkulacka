@@ -1,9 +1,9 @@
 package Controllers;
 
-import Exceptions.zlaDlzkaAMWException;
-import Exceptions.zlaMaskaException;
-import Exceptions.zlyPrefixException;
-import Exceptions.zlyWildcardException;
+import Exceptions.ZlaDlzkaAMWException;
+import Exceptions.ZlaMaskaException;
+import Exceptions.ZlyPrefixException;
+import Exceptions.ZlyWildcardException;
 import Objekty.Pmw;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -218,7 +218,7 @@ public class PmwController implements Initializable
                 wildcard.setText(pmw.getWildcard());
                 chybaL.setText("");
             }
-            catch (zlyPrefixException e)
+            catch (ZlyPrefixException e)
             {
                 System.out.println("zly prefix");
                 chybaL.setText("Prefix neexistuje! Prefix môže byť <0;32>");
@@ -246,14 +246,14 @@ public class PmwController implements Initializable
                 wildcard.setText(pmw.getWildcard());
                 chybaL.setText("");
             }
-            catch (zlaMaskaException e)
+            catch (ZlaMaskaException e)
             {
                 System.out.println("Maska neexistuje");
                 chybaL.setText("Maska Neexistuje!");
                 prefix.setText("");
                 wildcard.setText("");
             }
-            catch (zlaDlzkaAMWException e)
+            catch (ZlaDlzkaAMWException e)
             {
                 System.out.println("zla dlzka masky");
                 chybaL.setText("Maska neexistuje. Maska obsahuje 4 oktety.");
@@ -288,14 +288,14 @@ public class PmwController implements Initializable
                 chybaL.setText("");
 
             }
-            catch (zlyWildcardException e)
+            catch (ZlyWildcardException e)
             {
                 System.out.println("Wildcard neexistuje");
                 chybaL.setText("Wildcard neexistuje!");
                 prefix.setText("");
                 maska.setText("");
             }
-            catch (zlaDlzkaAMWException e)
+            catch (ZlaDlzkaAMWException e)
             {
                 System.out.println("zla dlzka wildcardu");
                 chybaL.setText("Wildcard neexistuje! Wildcard obsahuje 4 oktety.");
@@ -340,7 +340,7 @@ public class PmwController implements Initializable
                         wildcard.setText(pmw.getWildcard());
                         chybaL.setText("");
                     }
-                    catch (zlyPrefixException e)
+                    catch (ZlyPrefixException e)
                     {
                         System.out.println("zly prefix");
                         chybaL.setText("Prefix neexistuje! Prefix môže byť <0;32>");

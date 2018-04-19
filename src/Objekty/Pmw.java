@@ -1,9 +1,9 @@
 package Objekty;
 
-import Exceptions.zlaDlzkaAMWException;
-import Exceptions.zlaMaskaException;
-import Exceptions.zlyPrefixException;
-import Exceptions.zlyWildcardException;
+import Exceptions.ZlaDlzkaAMWException;
+import Exceptions.ZlaMaskaException;
+import Exceptions.ZlyPrefixException;
+import Exceptions.ZlyWildcardException;
 import Vypocitavanie.Prevody;
 
 public class Pmw
@@ -13,7 +13,7 @@ public class Pmw
     private int[] wildcard;
     private static Prevody prevody;
 
-    public Pmw(int prefix) throws zlyPrefixException
+    public Pmw(int prefix) throws ZlyPrefixException
     {
         prevody = new Prevody();
         this.prefix = getPrefix(prefix);
@@ -21,13 +21,13 @@ public class Pmw
         this.wildcard = fromMaskToWildcard(this.maska);
     }
 
-    public Pmw(String maska) throws zlaMaskaException, zlaDlzkaAMWException {
+    public Pmw(String maska) throws ZlaMaskaException, ZlaDlzkaAMWException {
         this.maska = getIntMaska(maska);
         this.wildcard = fromMaskToWildcard(this.maska);
         this.prefix = fromMaskToPrefix(this.maska);
     }
 
-    public Pmw(String wildcard, boolean a) throws zlaDlzkaAMWException, zlyWildcardException // a = true > wildcard   a = false > maska
+    public Pmw(String wildcard, boolean a) throws ZlaDlzkaAMWException, ZlyWildcardException // a = true > wildcard   a = false > maska
     {
         this.wildcard = getIntWildcard(wildcard);
         this.maska = fromWildcardToMask(this.wildcard);
@@ -145,7 +145,7 @@ public class Pmw
 
 
     // Metoda vrati int pole s maskou
-    public int[] getIntMaska(String maska) throws zlaDlzkaAMWException, zlaMaskaException {
+    public int[] getIntMaska(String maska) throws ZlaDlzkaAMWException, ZlaMaskaException {
         String[] inout = maska.split("\\.");
 
         int[] intMaska = new int[4];
@@ -153,7 +153,7 @@ public class Pmw
         //zisti ci ma maska 4 oktety
         if (inout.length != 4)
         {
-            zlaDlzkaAMWException a = new zlaDlzkaAMWException();
+            ZlaDlzkaAMWException a = new ZlaDlzkaAMWException();
             throw a;
         }
 
@@ -197,7 +197,7 @@ public class Pmw
 
             if(intMaska[q] != 0)
             {
-                zlaMaskaException b = new zlaMaskaException();
+                ZlaMaskaException b = new ZlaMaskaException();
                 throw b;
             }
         }
@@ -205,7 +205,7 @@ public class Pmw
         //zisti ci existuje taka maska
         if(intMaska[tmp] != 0 && intMaska[tmp] != 128 && intMaska[tmp] != 192 && intMaska[tmp] != 224 && intMaska[tmp] != 240 && intMaska[tmp] != 248 && intMaska[tmp] != 252 && intMaska[tmp] != 254 && intMaska[tmp] != 255)
         {
-            zlaMaskaException c = new zlaMaskaException();
+            ZlaMaskaException c = new ZlaMaskaException();
             throw c;
         }
 
@@ -214,7 +214,7 @@ public class Pmw
 
 
     // Metoda vrati int pole s maskou
-    public int[] getIntWildcard(String wildcard) throws zlaDlzkaAMWException, zlyWildcardException {
+    public int[] getIntWildcard(String wildcard) throws ZlaDlzkaAMWException, ZlyWildcardException {
         String[] inout = wildcard.split("\\.");
 
         int[] intWildcard = new int[4];
@@ -222,7 +222,7 @@ public class Pmw
         //zisti ci ma wildcard 4 oktety
         if (inout.length != 4)
         {
-            zlaDlzkaAMWException a = new zlaDlzkaAMWException();
+            ZlaDlzkaAMWException a = new ZlaDlzkaAMWException();
             throw a;
         }
 
@@ -264,14 +264,14 @@ public class Pmw
 
             if(intWildcard[q] != 0)
             {
-                zlyWildcardException b = new zlyWildcardException();
+                ZlyWildcardException b = new ZlyWildcardException();
                 throw b;
             }
         }
         //zisti ci existuje taka maska
         if(intWildcard[tmp] != 0 && intWildcard[tmp] != 1 && intWildcard[tmp] != 3 && intWildcard[tmp] != 7 && intWildcard[tmp] != 15 && intWildcard[tmp] != 31 && intWildcard[tmp] != 63 && intWildcard[tmp] != 127 && intWildcard[tmp] != 255)
         {
-            zlyWildcardException c = new zlyWildcardException();
+            ZlyWildcardException c = new ZlyWildcardException();
             throw c;
         }
 
@@ -279,11 +279,11 @@ public class Pmw
     }
 
     //metoda ktora vrati prefix a zisti ci taky prefix existuje
-    private int getPrefix(int prefix) throws zlyPrefixException
+    private int getPrefix(int prefix) throws ZlyPrefixException
     {
         if (prefix < 0 || prefix > 32)
         {
-            zlyPrefixException e = new zlyPrefixException();
+            ZlyPrefixException e = new ZlyPrefixException();
             throw e;
         }
         return prefix;

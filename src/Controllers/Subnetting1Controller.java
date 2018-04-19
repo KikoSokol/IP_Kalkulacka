@@ -1,13 +1,11 @@
 package Controllers;
 
 import Exceptions.*;
-import Objekty.Pmw;
 import Objekty.Siet;
 import Vypocitavanie.Subneting;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
-import javafx.collections.ObservableSet;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -270,39 +268,39 @@ public class Subnetting1Controller implements Initializable
                 table.setVisible(true);
                 chybaL.setText("");
             }
-            catch (zlaDlzkaAMWException e)
+            catch (ZlaDlzkaAMWException e)
             {
                 table.setVisible(false);
                 System.out.println("Zla dlzka adresy");
                 chybaL.setText("IP adresa neexistuje! IP adresa obsahuje 4 oktety.");
             }
-            catch (zlyOctetException e)
+            catch (ZlyOctetException e)
             {
                 table.setVisible(false);
                 System.out.println("Zly oktet");
                 chybaL.setText("IP adresa neexistuje. Oktet IP adresy može byť <0;255>");
 
             }
-            catch (zlyPrefixException e)
+            catch (ZlyPrefixException e)
             {
                 table.setVisible(false);
                 System.out.println("Zly prefix");
                 chybaL.setText("Prefix neexistuje! Prefix môže byť <0;32>");
             }
-            catch (subnetingException e)
+            catch (SubnetingException e)
             {
                 table.setVisible(false);
                 chybaL.setText("Táto sieť sa nedá rozdeliť na toľko podsietí!");
             }
-            catch (nullSubnetingException e)
+            catch (NullSubnetingException e)
             {
             }
-            catch (velaRozdelenychSietiException e)
+            catch (VelaRozdelenychSietiException e)
             {
                 table.setVisible(false);
                 chybaL.setText("Maximálny počet rozdelených sietí môže byť 524288!");
             }
-            catch (nieSietovaAdresaException e)
+            catch (NieSietovaAdresaException e)
             {
                 table.setVisible(false);
                 chybaL.setText("Zla IP adresa! Zadaj sieťovú adresu!");

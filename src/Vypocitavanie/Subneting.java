@@ -13,7 +13,7 @@ public class Subneting
        Metoda na klasicky subneting
        rozdeli adresu na rovnako velke siete
         */
-    public static ObservableList<Siet> sub(String sietA, int prefix, long pocet) throws zlaDlzkaAMWException, zlyOctetException, zlyPrefixException, subnetingException, nullSubnetingException, velaRozdelenychSietiException, IOException, nieSietovaAdresaException, PismenoVOkteteAdresaException {
+    public static ObservableList<Siet> sub(String sietA, int prefix, long pocet) throws ZlaDlzkaAMWException, ZlyOctetException, ZlyPrefixException, SubnetingException, NullSubnetingException, VelaRozdelenychSietiException, IOException, NieSietovaAdresaException, PismenoVOkteteAdresaException {
         Prevody prevody = new Prevody();
 
         //arraylist kde sa ulozia vsetky adresy
@@ -31,20 +31,20 @@ public class Subneting
         //ak na vstupe nebude sietova adresa
         if (!kontrola.getSietovaAdresa().equals(sietA))
         {
-            nieSietovaAdresaException e = new nieSietovaAdresaException();
+            NieSietovaAdresaException e = new NieSietovaAdresaException();
             throw e;
         }
         //ak uzivatel zada ze chce nula sieti
         if(pocet == 0)
         {
-            nullSubnetingException e = new nullSubnetingException();
+            NullSubnetingException e = new NullSubnetingException();
             throw e;
         }
 
         //ak uzivatel bude chciet rozdelit siet na viac ako 524288 sieti
         if (pocet > 524288)
         {
-            velaRozdelenychSietiException e = new velaRozdelenychSietiException();
+            VelaRozdelenychSietiException e = new VelaRozdelenychSietiException();
             throw e;
         }
 
@@ -61,7 +61,7 @@ public class Subneting
         {
             if (prefix < 0 || prefix > 32)
             {
-                zlyPrefixException e = new zlyPrefixException();
+                ZlyPrefixException e = new ZlyPrefixException();
                 throw e;
             }
 
@@ -74,7 +74,7 @@ public class Subneting
             int plus = prevody.najblizsiaOdmocnina2(pocet);
             if((32 - prefix) < plus)
             {
-                subnetingException e = new subnetingException();
+                SubnetingException e = new SubnetingException();
                 throw e;
             }
             int druhyPrefix = prefix + prevody.najblizsiaOdmocnina2(pocet);
@@ -166,7 +166,7 @@ public class Subneting
         return vysledneAdresy;
 
     }
-    public static ObservableList<Siet> sub2(String sietA, int prefix, int maxZariadeni, int pocet) throws zlaDlzkaAMWException, zlyOctetException, IOException, zlyPrefixException, nieSietovaAdresaException, MalaSietExcepiton, PismenoVOkteteAdresaException {
+    public static ObservableList<Siet> sub2(String sietA, int prefix, int maxZariadeni, int pocet) throws ZlaDlzkaAMWException, ZlyOctetException, IOException, ZlyPrefixException, NieSietovaAdresaException, MalaSietExcepiton, PismenoVOkteteAdresaException {
         Prevody prevody = new Prevody();
 
         //arraylist kde sa ulozia vsetky adresy
@@ -183,7 +183,7 @@ public class Subneting
         //ak na vstupe nebude sietova adresa
         if (!kontrola.getSietovaAdresa().equals(sietA))
         {
-            nieSietovaAdresaException e = new nieSietovaAdresaException();
+            NieSietovaAdresaException e = new NieSietovaAdresaException();
             throw e;
         }
 
@@ -342,7 +342,7 @@ public class Subneting
     }
 
     // metoda vracia intove pole s adresou
-    public static int[] getIntAddress(String adresa) throws zlaDlzkaAMWException, zlyOctetException
+    public static int[] getIntAddress(String adresa) throws ZlaDlzkaAMWException, ZlyOctetException
     {
         String[] inout = adresa.split("\\.");
         int[] address = new int[4];
@@ -350,7 +350,7 @@ public class Subneting
         // zisti ci adresa ma 4 octety
         if (inout.length != 4)
         {
-            zlaDlzkaAMWException a = new zlaDlzkaAMWException();
+            ZlaDlzkaAMWException a = new ZlaDlzkaAMWException();
             throw a;
         }
 
@@ -372,12 +372,12 @@ public class Subneting
         {
             if(address[q] < 0 )
             {
-                zlyOctetException a = new zlyOctetException();
+                ZlyOctetException a = new ZlyOctetException();
                 throw a;
             }
             if (address[q] > 255)
             {
-                zlyOctetException a = new zlyOctetException();
+                ZlyOctetException a = new ZlyOctetException();
                 throw a;
             }
         }

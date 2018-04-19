@@ -231,7 +231,6 @@ public class Subnetting2Controller implements Initializable
     @FXML
     void xAction(ActionEvent event)
     {
-        table.getItems().clear();
         table.setVisible(false);
         adresaTF.setText("");
         prefixTF.setText("");
@@ -282,26 +281,26 @@ public class Subnetting2Controller implements Initializable
                 if (siete.size() < Integer.parseInt(pocetTF.getText()))
                     chybaL.setText("Táto sieť sa dá rozdeliť iba na " + siete.size() + " podsiete!");
             }
-            catch (zlaDlzkaAMWException e)
+            catch (ZlaDlzkaAMWException e)
             {
                 table.setVisible(false);
                 System.out.println("Zla dlzka adresy");
                 chybaL.setText("IP adresa neexistuje! IP adresa obsahuje 4 oktety.");
             }
-            catch (zlyOctetException e)
+            catch (ZlyOctetException e)
             {
                 table.setVisible(false);
                 System.out.println("Zly oktet");
                 chybaL.setText("IP adresa neexistuje! Oktet IP adresy može byť <0;255>");
 
             }
-            catch (zlyPrefixException e)
+            catch (ZlyPrefixException e)
             {
                 table.setVisible(false);
                 System.out.println("Zly prefix");
                 chybaL.setText("Prefix neexistuje! Prefix môže byť <0;32>");
             }
-            catch (nieSietovaAdresaException e)
+            catch (NieSietovaAdresaException e)
             {
                 table.setVisible(false);
                 chybaL.setText("Zla IP adresa! Zadaj sieťovú adresu!");

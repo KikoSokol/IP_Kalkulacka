@@ -3,8 +3,6 @@ package Objekty;
 import Exceptions.*;
 import Vypocitavanie.Prevody;
 
-import java.io.IOException;
-
 public class Siet
 {
     private String nazovSiete;
@@ -24,7 +22,7 @@ public class Siet
     private boolean specialnaHostova = false;
 
     //konstruktor1
-    public Siet(String siet, int prefix) throws zlaDlzkaAMWException, zlyOctetException, zlyPrefixException, PismenoVOkteteAdresaException {
+    public Siet(String siet, int prefix) throws ZlaDlzkaAMWException, ZlyOctetException, ZlyPrefixException, PismenoVOkteteAdresaException {
         prevody = new Prevody();
         int[] zadanaAdresa = getIntAddress(siet);
         this.prefix = getPrefix(prefix);
@@ -58,7 +56,7 @@ public class Siet
     }
 
     //konstruktor1
-    public Siet(String siet, int prefix, String nazovSiete) throws zlaDlzkaAMWException, zlyOctetException, zlyPrefixException, PismenoVOkteteAdresaException
+    public Siet(String siet, int prefix, String nazovSiete) throws ZlaDlzkaAMWException, ZlyOctetException, ZlyPrefixException, PismenoVOkteteAdresaException
     {
         prevody = new Prevody();
         int[] zadanaAdresa = getIntAddress(siet);
@@ -93,7 +91,7 @@ public class Siet
 
     }
 
-    public Siet(String siet, String maska) throws zlaDlzkaAMWException, zlaDlzkaMasky, zlyOctetException, zlaMaskaException, PismenoVOkteteAdresaException, PismenoVOkteteMaskaException
+    public Siet(String siet, String maska) throws ZlaDlzkaAMWException, ZlaDlzkaMasky, ZlyOctetException, ZlaMaskaException, PismenoVOkteteAdresaException, PismenoVOkteteMaskaException
     {
         prevody = new Prevody();
         int[] zadanaAdresa = getIntAddress(siet);
@@ -126,7 +124,7 @@ public class Siet
 
     }
 
-    public Siet(int[] siet, int prefix) throws zlaDlzkaAMWException, zlyOctetException, zlyPrefixException
+    public Siet(int[] siet, int prefix) throws ZlaDlzkaAMWException, ZlyOctetException, ZlyPrefixException
     {
         prevody = new Prevody();
         int[] zadanaAdresa = siet;
@@ -510,14 +508,14 @@ public class Siet
 
 
     // metoda ktora vrati int pole s adresou
-    public static int[] getIntAddress(String adresa) throws zlaDlzkaAMWException, zlyOctetException, PismenoVOkteteAdresaException {
+    public static int[] getIntAddress(String adresa) throws ZlaDlzkaAMWException, ZlyOctetException, PismenoVOkteteAdresaException {
         String[] inout = adresa.split("\\.");
         int[] address = new int[4];
 
         // zisti ci adresa ma 4 octety
         if (inout.length != 4)
         {
-            zlaDlzkaAMWException a = new zlaDlzkaAMWException();
+            ZlaDlzkaAMWException a = new ZlaDlzkaAMWException();
             throw a;
         }
 
@@ -541,12 +539,12 @@ public class Siet
         {
             if(address[q] < 0 )
             {
-                zlyOctetException a = new zlyOctetException();
+                ZlyOctetException a = new ZlyOctetException();
                 throw a;
             }
             if (address[q] > 255)
             {
-                zlyOctetException a = new zlyOctetException();
+                ZlyOctetException a = new ZlyOctetException();
                 throw a;
             }
         }
@@ -554,7 +552,7 @@ public class Siet
     }
 
     // Metoda vrati int pole s maskou
-    public int[] getIntMaska(String maska) throws zlaDlzkaMasky, zlaMaskaException, PismenoVOkteteMaskaException {
+    public int[] getIntMaska(String maska) throws ZlaDlzkaMasky, ZlaMaskaException, PismenoVOkteteMaskaException {
         String[] inout = maska.split("\\.");
 
         int[] intMaska = new int[4];
@@ -562,7 +560,7 @@ public class Siet
         //zisti ci ma maska 4 oktety
         if (inout.length != 4)
         {
-            zlaDlzkaMasky a = new zlaDlzkaMasky();
+            ZlaDlzkaMasky a = new ZlaDlzkaMasky();
             throw a;
         }
 
@@ -608,7 +606,7 @@ public class Siet
             if(intMaska[q] != 0)
             {
 
-                zlaMaskaException b = new zlaMaskaException();
+                ZlaMaskaException b = new ZlaMaskaException();
                 throw b;
             }
         }
@@ -616,7 +614,7 @@ public class Siet
         //zisti ci existuje taka maska
         if(intMaska[tmp] != 0 && intMaska[tmp] != 128 && intMaska[tmp] != 192 && intMaska[tmp] != 224 && intMaska[tmp] != 240 && intMaska[tmp] != 248 && intMaska[tmp] != 252 && intMaska[tmp] != 254 && intMaska[tmp] != 255)
         {
-            zlaMaskaException c = new zlaMaskaException();
+            ZlaMaskaException c = new ZlaMaskaException();
             throw c;
         }
 
@@ -704,11 +702,11 @@ public class Siet
     }
 
     // metoda ktora vracia prefix
-    private int getPrefix(int prefix) throws zlyPrefixException
+    private int getPrefix(int prefix) throws ZlyPrefixException
     {
         if (prefix < 0 || prefix > 32)
         {
-            zlyPrefixException e = new zlyPrefixException();
+            ZlyPrefixException e = new ZlyPrefixException();
             throw e;
         }
         return prefix;

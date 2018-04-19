@@ -1,6 +1,6 @@
 package Controllers;
 
-import Exceptions.neexistujucaSustavaException;
+import Exceptions.NeexistujucaSustavaException;
 import Objekty.Sustavy;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -312,7 +312,7 @@ public class SustavyController implements Initializable
                             System.out.println("a");
                             chybaL.setText("");
                         }
-                        catch (neexistujucaSustavaException e)
+                        catch (NeexistujucaSustavaException e)
                         {
                             System.out.println("binarna");
                             chybaL.setText("Príliš veľké číslo!");
@@ -378,7 +378,7 @@ public class SustavyController implements Initializable
                             System.out.println("a");
                             chybaL.setText("");
                         }
-                        catch (neexistujucaSustavaException e)
+                        catch (NeexistujucaSustavaException e)
                         {
                             System.out.println("osem");
                             chybaL.setText("Príliš veľké číslo!");
@@ -457,7 +457,7 @@ public class SustavyController implements Initializable
                             System.out.println("a");
                             chybaL.setText("");
                         }
-                        catch (neexistujucaSustavaException e)
+                        catch (NeexistujucaSustavaException e)
                         {
                             System.out.println("sestnast");
                             chybaL.setText("Príliš veľké číslo!");
