@@ -243,13 +243,22 @@ public class Subnetting1Controller implements Initializable
     {
         //ak nebola zadana adresa
         if(adresaTF.getText().equals(""))
+        {
+            table.setVisible(false);
             chybaL.setText("Nebola zadaná sieťová adresa! Zadaj sieťovú adresu.");
+        }
         // ak nebol zadany prefix
         else if(prefixTF.getText().equals(""))
+        {
+            table.setVisible(false);
             chybaL.setText("Nebol zadaný prefix! Zadaj prefix siete.");
+        }
         //ak nebol zadany pocet potrebnych sieti
         else if(pocetTF.getText().equals(""))
+        {
+            table.setVisible(false);
             chybaL.setText("Nebol zadaný počet potrebných sieti!");
+        }
         //ak vsetko je zadane spravne vypocita udaje
         else
         {
@@ -263,22 +272,26 @@ public class Subnetting1Controller implements Initializable
             }
             catch (zlaDlzkaAMWException e)
             {
+                table.setVisible(false);
                 System.out.println("Zla dlzka adresy");
                 chybaL.setText("IP adresa neexistuje! IP adresa obsahuje 4 oktety.");
             }
             catch (zlyOctetException e)
             {
+                table.setVisible(false);
                 System.out.println("Zly oktet");
                 chybaL.setText("IP adresa neexistuje. Oktet IP adresy može byť <0;255>");
 
             }
             catch (zlyPrefixException e)
             {
+                table.setVisible(false);
                 System.out.println("Zly prefix");
                 chybaL.setText("Prefix neexistuje! Prefix môže byť <0;32>");
             }
             catch (subnetingException e)
             {
+                table.setVisible(false);
                 chybaL.setText("Táto sieť sa nedá rozdeliť na toľko podsietí!");
             }
             catch (nullSubnetingException e)
@@ -286,14 +299,17 @@ public class Subnetting1Controller implements Initializable
             }
             catch (velaRozdelenychSietiException e)
             {
+                table.setVisible(false);
                 chybaL.setText("Maximálny počet rozdelených sietí môže byť 524288!");
             }
             catch (nieSietovaAdresaException e)
             {
+                table.setVisible(false);
                 chybaL.setText("Zla IP adresa! Zadaj sieťovú adresu!");
             }
             catch (Exception e)
             {
+                table.setVisible(false);
                 chybaL.setText("IP adresa neexistuje! Oktet IP adresy môže obsahovať iba čísla.");
                 System.out.println("Zly vstup");
             }

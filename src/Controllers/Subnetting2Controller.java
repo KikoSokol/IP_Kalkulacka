@@ -244,11 +244,20 @@ public class Subnetting2Controller implements Initializable
     void enterAction(ActionEvent event)
     {
         if(adresaTF.getText().equals(""))
+        {
             chybaL.setText("Nebola zadaná sieťová adresa! Zadaj sieťovú adresu.");
+            table.setVisible(false);
+        }
         else if(prefix.getText().equals(""))
+        {
+            table.setVisible(false);
             chybaL.setText("Nebol zadaný prefix! Zadaj prefix siete.");
+        }
         else if(pocetZariadeniTF.getText().equals(""))
+        {
+            table.setVisible(false);
             chybaL.setText("Nebol zadaný maximálny počet veľkosti siete!");
+        }
         else
         {
             try
@@ -261,7 +270,11 @@ public class Subnetting2Controller implements Initializable
                 }
                 else
                 {
-                    siete = Subneting.sub2(adresaTF.getText(),Integer.parseInt(prefixTF.getText()), Integer.parseInt(pocetZariadeniTF.getText()),Integer.parseInt(pocetTF.getText()));
+                    if(Integer.parseInt(pocetTF.getText()) > 0)
+                    {
+                        siete = Subneting.sub2(adresaTF.getText(),Integer.parseInt(prefixTF.getText()), Integer.parseInt(pocetZariadeniTF.getText()),Integer.parseInt(pocetTF.getText()));
+                    }
+
                 }
                 table.setItems(siete);
                 table.setVisible(true);
@@ -271,36 +284,43 @@ public class Subnetting2Controller implements Initializable
             }
             catch (zlaDlzkaAMWException e)
             {
+                table.setVisible(false);
                 System.out.println("Zla dlzka adresy");
                 chybaL.setText("IP adresa neexistuje! IP adresa obsahuje 4 oktety.");
             }
             catch (zlyOctetException e)
             {
+                table.setVisible(false);
                 System.out.println("Zly oktet");
                 chybaL.setText("IP adresa neexistuje! Oktet IP adresy može byť <0;255>");
 
             }
             catch (zlyPrefixException e)
             {
+                table.setVisible(false);
                 System.out.println("Zly prefix");
                 chybaL.setText("Prefix neexistuje! Prefix môže byť <0;32>");
             }
             catch (nieSietovaAdresaException e)
             {
+                table.setVisible(false);
                 chybaL.setText("Zla IP adresa! Zadaj sieťovú adresu!");
             }
             catch (MalaSietExcepiton e)
             {
+                table.setVisible(false);
                 chybaL.setText("Sieť sa nedá rozdeliť!");
             }
             catch (NumberFormatException e)
             {
-
+                table.setVisible(false);
+                chybaL.setText("IP adresa neexistuje! Oktet IP adresy môže obsahovať iba čísla.");
+                System.out.println("Zly vstup");
             }
             catch (Exception e)
             {
-                chybaL.setText("IP adresa neexistuje! Oktet IP adresy môže obsahovať iba čísla.");
-                System.out.println("Zly vstup");
+                table.setVisible(false);
+                chybaL.setText("Bolo zadané počet sieti 0!");
             }
         }
 
