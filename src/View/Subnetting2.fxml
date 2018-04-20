@@ -100,7 +100,7 @@
                                  <font>
                                     <Font size="17.0" />
                                  </font></Label>
-                              <TextField fx:id="pocetTF" alignment="BOTTOM_CENTER" prefHeight="38.0" prefWidth="250.0" promptText="4">
+                              <TextField fx:id="pocetTF" alignment="BOTTOM_CENTER" prefHeight="38.0" prefWidth="250.0" promptText="1000">
                                  <font>
                                     <Font size="25.0" />
                                  </font></TextField>
