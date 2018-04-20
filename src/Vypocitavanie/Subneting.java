@@ -42,7 +42,7 @@ public class Subneting
         }
 
         //ak uzivatel bude chciet rozdelit siet na viac ako 524288 sieti
-        if (pocet > 524288)
+        if (pocet > 1000)
         {
             VelaRozdelenychSietiException e = new VelaRozdelenychSietiException();
             throw e;
@@ -166,8 +166,20 @@ public class Subneting
         return vysledneAdresy;
 
     }
-    public static ObservableList<Siet> sub2(String sietA, int prefix, int maxZariadeni, int pocet) throws ZlaDlzkaAMWException, ZlyOctetException, IOException, ZlyPrefixException, NieSietovaAdresaException, MalaSietExcepiton, PismenoVOkteteAdresaException {
+    public static ObservableList<Siet> sub2(String sietA, int prefix, String maxZariadeniS, int pocet) throws ZlaDlzkaAMWException, ZlyOctetException, IOException, ZlyPrefixException, NieSietovaAdresaException, MalaSietExcepiton, PismenoVOkteteAdresaException {
         Prevody prevody = new Prevody();
+
+        int maxZariadeni;
+        try
+        {
+            maxZariadeni = Integer.parseInt(maxZariadeniS);
+        }
+        //ak maximalny pocet zariadeni bude vecsi ako 2147483647
+        catch (NumberFormatException e)
+        {
+            MalaSietExcepiton malaSietExcepiton = new MalaSietExcepiton();
+            throw malaSietExcepiton;
+        }
 
         //arraylist kde sa ulozia vsetky adresy
         ObservableList<Siet> vysledneAdresy = FXCollections.observableArrayList();

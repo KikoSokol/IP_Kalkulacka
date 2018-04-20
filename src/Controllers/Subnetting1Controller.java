@@ -234,6 +234,7 @@ public class Subnetting1Controller implements Initializable
         adresaTF.setText("");
         prefixTF.setText("");
         pocetTF.setText("");
+        chybaL.setText("");
     }
 
     @FXML
@@ -294,22 +295,30 @@ public class Subnetting1Controller implements Initializable
             }
             catch (NullSubnetingException e)
             {
+                table.setVisible(false);
+                chybaL.setText("Bolo zadané počet sieti 0!");
             }
             catch (VelaRozdelenychSietiException e)
             {
                 table.setVisible(false);
-                chybaL.setText("Maximálny počet rozdelených sietí môže byť 524288!");
+                chybaL.setText("Maximálny počet rozdelených sietí môže byť 1000!");
             }
             catch (NieSietovaAdresaException e)
             {
                 table.setVisible(false);
                 chybaL.setText("Zla IP adresa! Zadaj sieťovú adresu!");
             }
-            catch (Exception e)
+            catch (NumberFormatException e)
             {
                 table.setVisible(false);
                 chybaL.setText("IP adresa neexistuje! Oktet IP adresy môže obsahovať iba čísla.");
                 System.out.println("Zly vstup");
+
+            }
+            catch (Exception e)
+            {
+                table.setVisible(false);
+                chybaL.setText("Maximálny počet rozdelených sietí môže byť 1000!");
             }
         }
 

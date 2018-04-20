@@ -257,28 +257,16 @@ public class Subnetting2Controller implements Initializable
             table.setVisible(false);
             chybaL.setText("Nebol zadaný maximálny počet veľkosti siete!");
         }
-        else
+        else if(pocetTF.getText().equals(""))
         {
             try
             {
-                ObservableList<Siet> siete = null;
-                siete = null;
-                if (pocetTF.getText().equals(""))
-                {
-                    siete = Subneting.sub2(adresaTF.getText(),Integer.parseInt(prefixTF.getText()), Integer.parseInt(pocetZariadeniTF.getText()),100);
-                }
-                else
-                {
-                    if(Integer.parseInt(pocetTF.getText()) > 0)
-                    {
-                        siete = Subneting.sub2(adresaTF.getText(),Integer.parseInt(prefixTF.getText()), Integer.parseInt(pocetZariadeniTF.getText()),Integer.parseInt(pocetTF.getText()));
-                    }
-
-                }
+                ObservableList<Siet> siete = Subneting.sub2(adresaTF.getText(),Integer.parseInt(prefixTF.getText()), pocetZariadeniTF.getText(),1000);
                 table.setItems(siete);
                 table.setVisible(true);
                 chybaL.setText("");
-                if (siete.size() < Integer.parseInt(pocetTF.getText()))
+
+                if (siete.size() < 1000)
                     chybaL.setText("Táto sieť sa dá rozdeliť iba na " + siete.size() + " podsiete!");
             }
             catch (ZlaDlzkaAMWException e)
@@ -315,13 +303,162 @@ public class Subnetting2Controller implements Initializable
                 table.setVisible(false);
                 chybaL.setText("IP adresa neexistuje! Oktet IP adresy môže obsahovať iba čísla.");
                 System.out.println("Zly vstup");
+
             }
             catch (Exception e)
             {
                 table.setVisible(false);
-                chybaL.setText("Bolo zadané počet sieti 0!");
+                chybaL.setText("Maximálny počet rozdelených sieti môže byť 1000!");
             }
         }
+        else
+        {
+            try
+            {
+                if (Integer.parseInt(pocetTF.getText()) > 1000)
+                {
+                    table.setVisible(false);
+                    chybaL.setText("Maximálny počet rozdelených sieti môže byť 1000!");
+                }
+                else if (Integer.parseInt(pocetTF.getText()) == 0)
+                {
+                    table.setVisible(false);
+                    chybaL.setText("Bolo zadaných počet sieti 0!");
+                }
+                else
+                {
+                    ObservableList<Siet> siete =  siete = Subneting.sub2(adresaTF.getText(),Integer.parseInt(prefixTF.getText()), pocetZariadeniTF.getText(),Integer.parseInt(pocetTF.getText()));
+                    table.setItems(siete);
+                    table.setVisible(true);
+                    chybaL.setText("");
+
+                    if (siete.size() < Integer.parseInt(pocetTF.getText()))
+                        chybaL.setText("Táto sieť sa dá rozdeliť iba na " + siete.size() + " podsiete!");
+                }
+            }
+            catch (ZlaDlzkaAMWException e)
+            {
+                table.setVisible(false);
+                System.out.println("Zla dlzka adresy");
+                chybaL.setText("IP adresa neexistuje! IP adresa obsahuje 4 oktety.");
+            }
+            catch (ZlyOctetException e)
+            {
+                table.setVisible(false);
+                System.out.println("Zly oktet");
+                chybaL.setText("IP adresa neexistuje! Oktet IP adresy može byť <0;255>");
+
+            }
+            catch (ZlyPrefixException e)
+            {
+                table.setVisible(false);
+                System.out.println("Zly prefix");
+                chybaL.setText("Prefix neexistuje! Prefix môže byť <0;32>");
+            }
+            catch (NieSietovaAdresaException e)
+            {
+                table.setVisible(false);
+                chybaL.setText("Zla IP adresa! Zadaj sieťovú adresu!");
+            }
+            catch (MalaSietExcepiton e)
+            {
+                table.setVisible(false);
+                chybaL.setText("Sieť sa nedá rozdeliť!");
+            }
+            catch (NumberFormatException e)
+            {
+                table.setVisible(false);
+                chybaL.setText("IP adresa neexistuje! Oktet IP adresy môže obsahovať iba čísla.");
+                System.out.println("Zly vstup");
+
+            }
+            catch (Exception e)
+            {
+                table.setVisible(false);
+                chybaL.setText("Maximálny počet rozdelených sieti môže byť 1000!");
+            }
+        }
+        //dobre
+//        else
+//        {
+//                try
+//                {
+//                    ObservableList<Siet> siete = null;
+//                    siete = null;
+//                    if (pocetTF.getText().equals(""))
+//                    {
+//                        siete = Subneting.sub2(adresaTF.getText(),Integer.parseInt(prefixTF.getText()), Integer.parseInt(pocetZariadeniTF.getText()),1000);
+//                    }
+//                    if(Integer.parseInt(pocetTF.getText()) == 0)
+//                    {
+//                        chybaL.setText("Bolo zadaných 0 sieti!");
+//                        table.setVisible(false);
+//                    }
+//                    else
+//                    {
+//                        if(Integer.parseInt(pocetTF.getText()) > 0)
+//                        {
+//                            siete = Subneting.sub2(adresaTF.getText(),Integer.parseInt(prefixTF.getText()), Integer.parseInt(pocetZariadeniTF.getText()),Integer.parseInt(pocetTF.getText()));
+//                        }
+//
+//                    }
+//                    if (!(siete == null))
+//                    {
+//                        table.setItems(siete);
+//                        table.setVisible(true);
+//                        chybaL.setText("");
+//                    }
+//
+//
+//                    if(pocetTF.getText().equals("") == false)
+//                    {
+//                        if (siete.size() < Integer.parseInt(pocetTF.getText()))
+//                            chybaL.setText("Táto sieť sa dá rozdeliť iba na " + siete.size() + " podsiete!");
+//                    }
+//
+//                }
+//                catch (ZlaDlzkaAMWException e)
+//                {
+//                    table.setVisible(false);
+//                    System.out.println("Zla dlzka adresy");
+//                    chybaL.setText("IP adresa neexistuje! IP adresa obsahuje 4 oktety.");
+//                }
+//                catch (ZlyOctetException e)
+//                {
+//                    table.setVisible(false);
+//                    System.out.println("Zly oktet");
+//                    chybaL.setText("IP adresa neexistuje! Oktet IP adresy može byť <0;255>");
+//
+//                }
+//                catch (ZlyPrefixException e)
+//                {
+//                    table.setVisible(false);
+//                    System.out.println("Zly prefix");
+//                    chybaL.setText("Prefix neexistuje! Prefix môže byť <0;32>");
+//                }
+//                catch (NieSietovaAdresaException e)
+//                {
+//                    table.setVisible(false);
+//                    chybaL.setText("Zla IP adresa! Zadaj sieťovú adresu!");
+//                }
+//                catch (MalaSietExcepiton e)
+//                {
+//                    table.setVisible(false);
+//                    chybaL.setText("Sieť sa nedá rozdeliť!");
+//                }
+//                catch (NumberFormatException e)
+//                {
+//                    table.setVisible(false);
+//                    chybaL.setText("IP adresa neexistuje! Oktet IP adresy môže obsahovať iba čísla.");
+//                    System.out.println("Zly vstup");
+//                }
+//                catch (Exception e)
+//                {
+//
+//                }
+//
+//
+//        }
 
     }
 
