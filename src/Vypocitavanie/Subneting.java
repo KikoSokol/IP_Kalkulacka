@@ -320,7 +320,7 @@ public class Subneting
     do - znamena do akeho indexu sa menia 1 v binarnom oktete
     c - sposob menenia jednotiek
      */
-    public static int[] dajMoznosti(int octet,int velkost, int border, int border2, int od, int doK, boolean c)
+    private static int[] dajMoznosti(int octet,int velkost, int border, int border2, int od, int doK, boolean c)
     {
         Prevody prevody = new Prevody();
         int[] moznosti = new int[velkost];              // ulozenie vsetkych moznosti
@@ -354,7 +354,7 @@ public class Subneting
     }
 
     // metoda vracia intove pole s adresou
-    public static int[] getIntAddress(String adresa) throws ZlaDlzkaAMWException, ZlyOctetException
+    private static int[] getIntAddress(String adresa) throws ZlaDlzkaAMWException, ZlyOctetException
     {
         String[] inout = adresa.split("\\.");
         int[] address = new int[4];

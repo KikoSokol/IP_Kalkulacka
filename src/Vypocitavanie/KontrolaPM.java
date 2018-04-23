@@ -7,8 +7,6 @@ public class KontrolaPM
     private String maska;
     //uzivatelom zadany prefix
     private int prefix;
-    //vysledok
-    boolean rovnake;
 
 
     public KontrolaPM(String maska, int prefix)

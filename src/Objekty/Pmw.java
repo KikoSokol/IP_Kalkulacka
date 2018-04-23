@@ -69,7 +69,7 @@ public class Pmw
     */
 
     // metoda na prevod prefixu do masky
-    public static int[] fromPrefixToMask(int prefix)
+    private static int[] fromPrefixToMask(int prefix)
     {
         int[] mask = new int[4];  			// pole do ktorej sa uklada vysledna maska
         int full = prefix / 8;				// zisťuje kolko oktetov bude 255
@@ -91,7 +91,7 @@ public class Pmw
         return mask;
     }
     // metoda ne prevod masky na prefix
-    public static int fromMaskToPrefix(int[] mask)
+    private static int fromMaskToPrefix(int[] mask)
     {
         int prefix = 0;                     			// vysledny prefix
         for(int i = 0; i < mask.length;i++)				// prehladava oktety masky
@@ -107,15 +107,19 @@ public class Pmw
         }
         return prefix;
     }
-    // metoda na prevod prefixu na wildcard
-    public static int[] fromPrefixToWildcard(int prefix)
-    {
-        int[] mask = fromPrefixToMask(prefix);         // prefix prevedie na masku
-        int[] Wildcard = fromMaskToWildcard(mask);     // maska sa prevedie ma wildcard
-        return Wildcard;
-    }
+
+    //VYMAZ
+//    // metoda na prevod prefixu na wildcard
+//    public static int[] fromPrefixToWildcard(int prefix)
+//    {
+//        int[] mask = fromPrefixToMask(prefix);         // prefix prevedie na masku
+//        int[] Wildcard = fromMaskToWildcard(mask);     // maska sa prevedie ma wildcard
+//        return Wildcard;
+//    }
+
+
     // metoda na predod masky na wildcard
-    public static int[] fromMaskToWildcard(int[] mask)
+    private static int[] fromMaskToWildcard(int[] mask)
     {
         int[] Wildcard = new int[4];      				// pole kde bude ulozeny wildcard
         for(int index = 0; index < Wildcard.length;index++)
@@ -125,7 +129,7 @@ public class Pmw
         return Wildcard;
     }
     // metoda na prevod wildcardu na masku
-    public static int[] fromWildcardToMask(int[] wildcard)
+    private static int[] fromWildcardToMask(int[] wildcard)
     {
         int[] mask = new int[4];            			// pole kde bude ulozena maska
 
@@ -136,7 +140,7 @@ public class Pmw
         return mask;
     }
     // metoda na prevod wildcardu na prefix
-    public static int fromWildcardToPrefix(int[] wildcard)
+    private static int fromWildcardToPrefix(int[] wildcard)
     {
         int prefix = fromMaskToPrefix(fromWildcardToMask(wildcard)); // wildcard bude prevedeny na masku a nasledne sa maska prevedie na prefix
         return prefix;
@@ -145,7 +149,7 @@ public class Pmw
 
 
     // Metoda vrati int pole s maskou
-    public int[] getIntMaska(String maska) throws ZlaDlzkaAMWException, ZlaMaskaException {
+    private int[] getIntMaska(String maska) throws ZlaDlzkaAMWException, ZlaMaskaException {
         String[] inout = maska.split("\\.");
 
         int[] intMaska = new int[4];
@@ -214,7 +218,7 @@ public class Pmw
 
 
     // Metoda vrati int pole s maskou
-    public int[] getIntWildcard(String wildcard) throws ZlaDlzkaAMWException, ZlyWildcardException {
+    private int[] getIntWildcard(String wildcard) throws ZlaDlzkaAMWException, ZlyWildcardException {
         String[] inout = wildcard.split("\\.");
 
         int[] intWildcard = new int[4];

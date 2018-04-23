@@ -95,7 +95,7 @@ public class Vlsm
     }
 
     //zoradovanie 2rozmerneho pola - riadky podla velkosti prvkov v 1.stlpci
-    public static String[][] quicksort(String[][] array, int left, int right)
+    private static String[][] quicksort(String[][] array, int left, int right)
     {
         if(left < right)
         {
@@ -116,17 +116,5 @@ public class Vlsm
         String[] tmp = array[right];
         array[right] = array[left];
         array[left] = tmp;
-    }
-
-    private static String hladanieNazvu(String[][] a, int prefix)
-    {
-        Prevody prevody = new Prevody();
-        int pocetZariadeni = (prevody.exponentiation(2,32 - prefix) - 2);
-        for(int i = 0; i < a.length; i++)
-        {
-            if(Integer.parseInt(a[i][0]) == pocetZariadeni)
-                return a[i][1];
-        }
-        return "";
     }
 }

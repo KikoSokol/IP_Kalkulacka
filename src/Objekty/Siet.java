@@ -432,7 +432,7 @@ public class Siet
 
 
     // metoda na prevod prefixu do masky
-    public static int[] fromPrefixToMask(int prefix)
+    private static int[] fromPrefixToMask(int prefix)
     {
         int[] mask = new int[4];  			// pole do ktorej sa uklada vysledna maska
         int full = prefix / 8;				// zisťuje kolko oktetov bude 255
@@ -455,7 +455,7 @@ public class Siet
     }
 
     // metoda ne prevod masky na prefix
-    public static int fromMaskToPrefix(int[] mask)
+    private static int fromMaskToPrefix(int[] mask)
     {
         int prefix = 0;                     			// vysledny prefix
         for(int i = 0; i < mask.length;i++)				// prehladava oktety masky
@@ -474,7 +474,7 @@ public class Siet
 
 
     // metoda na predod masky na wildcard
-    public static int[] fromMaskToWildcard(int[] mask)
+    private static int[] fromMaskToWildcard(int[] mask)
     {
         int[] Wildcard = new int[4];      				// pole kde bude ulozeny wildcard
         for(int index = 0; index < Wildcard.length;index++)
@@ -486,7 +486,7 @@ public class Siet
 
 
     // metoda ktora zisti velkost siete / pocet adries
-    public static long getSpaceAddress(int prefix)
+    private static long getSpaceAddress(int prefix)
     {
         long spaceAddress;
         spaceAddress = prevody.exponentiationLong((long)2,(long)32 - prefix);
@@ -495,7 +495,7 @@ public class Siet
 
 
     // metoda ktora najde prvu alebo poslednu pouzitelnu adresu v sieti
-    public static int[] getFirstOrLastAddress(int[] address,int prefix,boolean or)	//ak or == true -> getFirst ak or == false -> getLast
+    private static int[] getFirstOrLastAddress(int[] address,int prefix,boolean or)	//ak or == true -> getFirst ak or == false -> getLast
     {
         int[] net = getNetOrBroAddress(address,prefix,true);     	// pole pre sietovu adresu
         int[] bro = getNetOrBroAddress(address,prefix,false);		// pole pre broadcastovu adresu
@@ -508,7 +508,7 @@ public class Siet
 
 
     // metoda ktora vrati int pole s adresou
-    public static int[] getIntAddress(String adresa) throws ZlaDlzkaAMWException, ZlyOctetException, PismenoVOkteteAdresaException {
+    private int[] getIntAddress(String adresa) throws ZlaDlzkaAMWException, ZlyOctetException, PismenoVOkteteAdresaException {
         String[] inout = adresa.split("\\.");
         int[] address = new int[4];
 
@@ -620,30 +620,30 @@ public class Siet
 
         return intMaska;
     }
-
-
-    //metoda ktora zistuje ci existuje taka adresa
-    public static boolean isThisIPv4Address(int[] address)
-    {
-        for (int i : address)
-        {
-            if (i < 0 || i > 255)
-                return false;
-        }
-        return true;
-    }
-
-
-    // metoda ktora konvertuje stringove pole na intove pole
-    public static int[] stringArrayToIntArray(String[] array)
-    {
-        int[] arrayInt = new int[array.length];
-        for (int i = 0; i < array.length; i++)
-        {
-            arrayInt[i] = Integer.parseInt(array[i]);
-        }
-        return arrayInt;
-    }
+//
+//VYMAZAT
+//    //metoda ktora zistuje ci existuje taka adresa
+//    public static boolean isThisIPv4Address(int[] address)
+//    {
+//        for (int i : address)
+//        {
+//            if (i < 0 || i > 255)
+//                return false;
+//        }
+//        return true;
+//    }
+//
+//
+//    // metoda ktora konvertuje stringove pole na intove pole
+//    public static int[] stringArrayToIntArray(String[] array)
+//    {
+//        int[] arrayInt = new int[array.length];
+//        for (int i = 0; i < array.length; i++)
+//        {
+//            arrayInt[i] = Integer.parseInt(array[i]);
+//        }
+//        return arrayInt;
+//    }
 
 
     // metoda ktora urci triedu sietovaj adresy
@@ -663,7 +663,7 @@ public class Siet
 
 
     // metoda ktora vypocita poradie adresy
-    private static long poradie(int[] address,int prefix)	// net == true -> getNet  ak net == false -> getBro
+    private long poradie(int[] address,int prefix)	// net == true -> getNet  ak net == false -> getBro
     {
         long poradie = 0;
 
@@ -686,7 +686,7 @@ public class Siet
 
 
     // metoda pocita jednotky v oktete
-    private static long calcOctet(int[] octet,long poradie, int fromThisPrefix, int numOctet, int border, int exponent)	//octet,fromThisPrefix,number octet,border,net
+    private long calcOctet(int[] octet,long poradie, int fromThisPrefix, int numOctet, int border, int exponent)	//octet,fromThisPrefix,number octet,border,net
     {
         if(fromThisPrefix <= numOctet)			// numOctet - number octets which is changing
         {
@@ -734,7 +734,7 @@ public class Siet
         return getNasledujucaSietovaS(bc);
     }
 
-    public String getNasledujucaSietovaS(int[] adresa) {
+    private String getNasledujucaSietovaS(int[] adresa) {
         String sBroadcastovaAdresa = "";
         for(int i = 0; i < 4; i++)
         {
