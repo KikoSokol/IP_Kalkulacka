@@ -31,7 +31,7 @@
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font></Button>
-                        <Button id="menuTlacidla" fx:id="subnetting1" mnemonicParsing="false" onAction="#subnetting1Action" prefHeight="100.0" prefWidth="213.0" text="Subnetting -&#10; rovnaka veľkosť sieti" textAlignment="CENTER">
+                        <Button id="menuTlacidla" fx:id="subnetting1" mnemonicParsing="false" onAction="#subnetting1Action" prefHeight="100.0" prefWidth="213.0" text="Subnetting -&#10; rovnaká veľkosť sietí" textAlignment="CENTER">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font></Button>
@@ -51,7 +51,7 @@
                   </HBox>
                   <HBox id="vsudajeHB" fx:id="funkciaHB" alignment="CENTER" prefHeight="51.0" prefWidth="1280.0">
                      <children>
-                        <Label fx:id="funkciaL" alignment="CENTER" prefHeight="34.0" prefWidth="1280.0" text="Subnetting - na rovnako veľké siete">
+                        <Label fx:id="funkciaL" alignment="CENTER" prefHeight="34.0" prefWidth="1280.0" text="Subnetting - rovnaká veľkosť sietí">
                            <font>
                               <Font name="System Bold" size="20.0" />
                            </font></Label>

@@ -173,7 +173,7 @@ public class Subnetting1Controller implements Initializable
 
         Stage subnetting1Stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         subnetting1Stage.setScene(subnetting1Scena);
-        subnetting1Stage.setTitle("Subnetting - rovnako veľke siete");
+        subnetting1Stage.setTitle("Subnetting - rovnaká veľkosť sietí");
         subnetting1Stage.show();
 
     }
