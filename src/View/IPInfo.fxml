@@ -30,7 +30,7 @@
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font></Button>
-                        <Button id="menuTlacidla" fx:id="subnetting1" focusTraversable="false" mnemonicParsing="false" onAction="#subnetting1Action" prefHeight="100.0" prefWidth="213.0" text="Subnetting -&#10; rovnaka veľkosť sieti" textAlignment="CENTER">
+                        <Button id="menuTlacidla" fx:id="subnetting1" focusTraversable="false" mnemonicParsing="false" onAction="#subnetting1Action" prefHeight="100.0" prefWidth="213.0" text="Subnetting -&#10; rovnaká veľkosť sietí" textAlignment="CENTER">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font></Button>
